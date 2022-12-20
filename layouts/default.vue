@@ -1,6 +1,5 @@
 <template>
   <div id="default-layout">
-    <NavigationBar />
     <div class="contents">
       <slot />
     </div>

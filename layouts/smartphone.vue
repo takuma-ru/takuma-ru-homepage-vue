@@ -3,7 +3,6 @@
     <div class="contents">
       <slot />
     </div>
-    <BottomNavigationBar />
   </div>
 </template>
 
