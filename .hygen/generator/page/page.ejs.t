@@ -3,7 +3,10 @@ to: pages/<%= h.changeCase.camel(pageName) %>.vue
 ---
 
 <template>
-  <div id="<%= h.changeCase.camel(pageName)  %>">
+  <div
+    id="<%= pageName  %>"
+    :class="displaySize"
+  >
     <%= h.changeCase.camel(pageName)  %>
   </div>
 </template>
@@ -12,6 +15,9 @@ to: pages/<%= h.changeCase.camel(pageName) %>.vue
 /* -- type, interface -- */
 
 /* -- store -- */
+const {
+  displaySize
+} = displayStatus()
 
 /* -- props, emit -- */
 
@@ -28,7 +34,19 @@ definePageMeta({
 </script>
 
 <style lang="scss" scoped>
-#<%= h.changeCase.camel(pageName)  %> {
+#<%= pageName  %> {
 
+
+  &.pc {
+
+  }
+
+  &.lp {
+
+  }
+
+  &.sm {
+
+  }
 }
 </style>
