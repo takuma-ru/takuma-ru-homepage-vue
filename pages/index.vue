@@ -6,46 +6,41 @@
         I'm <HighLight>takuma-ru</HighLight>.
       </h1>
       <div class="media">
-        <SocialMediaButon
-          v-for="mediaData in mediaDataList"
-          :key="mediaData.mediaName"
-          :uid="mediaData.uid"
-          :media-name="mediaData.mediaName"
-          :style="{
-            marginBottom: '1rem'
-          }"
-        />
+        <Button
+          icon="person"
+          to="/about"
+        >
+          Go to About Me
+        </Button>
+        <Button
+          icon="category"
+          to="/works"
+          :color="colorStore.color.green.default"
+        >
+          Go to My Portfolio
+        </Button>
+        <Button
+          icon="mail"
+          to="/about"
+          :color="colorStore.color.yellow.default"
+        >
+          How to contact me
+        </Button>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ISocialMediaButonProps } from '~/components/utils/SocialMediaButon/SocialMediaButon.vue'
-
 /* -- type, interface -- */
 
 /* -- store -- */
+const displayStatusStore = useDisplayStatusStore()
+const colorStore = useColorStore()
 
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
-const displayStatusStore = useDisplayStatusStore()
-const mediaDataList = ref<Array<ISocialMediaButonProps>>([
-  {
-    uid: 'takuma-ru',
-    mediaName: 'github'
-  },
-  {
-    uid: 'takumaru_2222',
-    mediaName: 'twitter'
-  },
-  {
-    uid: 'nekoo_2222',
-    mediaName: 'instagram'
-  }
-])
-
 /* -- function -- */
 
 /* -- watch -- */
@@ -74,6 +69,10 @@ definePageMeta({
     .media {
       display: flex;
       flex-flow: column;
+
+      #Button {
+        margin-bottom: 1rem;
+      }
     }
   }
 }
