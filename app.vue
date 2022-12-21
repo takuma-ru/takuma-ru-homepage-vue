@@ -14,6 +14,7 @@ registerSW()
 
 /* -- store -- */
 const colorStore = useColorStore()
+const colorMode = useColorModeStore()
 
 /* -- props, emit -- */
 
@@ -32,6 +33,7 @@ const layout = computed(() => {
 /* -- watch -- */
 
 /* -- life cycle -- */
+colorMode.setSytemMode()
 
 </script>
 
