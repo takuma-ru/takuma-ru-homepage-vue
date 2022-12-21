@@ -7,22 +7,32 @@
       </h1>
       <div class="media">
         <Button
+          color="transparent"
           icon="person"
+          :icon-props="{
+            fill: true
+          }"
           to="/about"
         >
           Go to About Me
         </Button>
         <Button
+          color="transparent"
           icon="category"
+          :icon-props="{
+            fill: true
+          }"
           to="/works"
-          :color="colorStore.color.green.default"
         >
           Go to My Portfolio
         </Button>
         <Button
+          color="transparent"
           icon="mail"
-          to="/about"
-          :color="colorStore.color.yellow.default"
+          :icon-props="{
+            fill: true
+          }"
+          to="/contact"
         >
           How to contact me
         </Button>
@@ -54,14 +64,13 @@ definePageMeta({
 
 <style lang="scss" scoped>
 #index {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+
+  height: 100%;
+
   .title {
-    display: grid;
-
-    position: absolute;
-    top: 50%;
-
-    transform: translateY(-50%);
-
     .my-name {
       font-size: 3rem;
     }
@@ -71,6 +80,8 @@ definePageMeta({
       flex-flow: column;
 
       #Button {
+        width: fit-content;
+
         margin-bottom: 1rem;
       }
     }

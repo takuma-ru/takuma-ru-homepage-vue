@@ -114,6 +114,7 @@ const {
   }
 
   .buttons {
+    grid-column: 3;
     justify-self: end;
   }
 }
