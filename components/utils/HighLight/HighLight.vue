@@ -46,22 +46,34 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
   /* margin: 0rem 0.5rem; */
 
   white-space: nowrap;
-  border-radius: 0.5rem;
-  border: solid 2px v-bind("props.color");
-  box-sizing: border-box;
   animation-name: clip-text;
+
+  &::before {
+    content: "";
+    z-index: 999;
+    position: absolute;
+    left: 0rem;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0.25rem;
+    border: solid 2px v-bind("props.color");
+    box-sizing: border-box;
+  }
 
   &::after {
     content: "";
     position: absolute;
-    z-index: 999;
-    height: calc(100% + 4px);
+    z-index: 998;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: v-bind("props.color");
-    border-radius: 0.5rem;
+    border-radius: 0rem;
+    overflow: hidden;
     transform: scaleX(0);
     transform-origin: 0 50%;
     pointer-events: none;
