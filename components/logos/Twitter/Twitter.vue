@@ -3,11 +3,11 @@
     <svg
       clip-rule="evenodd"
       fill-rule="evenodd"
-      height="24"
+      height="20"
       stroke-linejoin="round"
       stroke-miterlimit="2"
       viewBox="-89.00934757 -46.8841404 643.93723344 446.8841404"
-      width="35.6"
+      width="29.6"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -42,8 +42,8 @@ const colorStore = useColorStore()
   justify-content: center;
 
   svg {
-    height: 20px;
-    width: 29.6px;
+    height: 28px;
+    width: 28px;
     fill: v-bind("colorStore.color.theme.subText");
   }
 }

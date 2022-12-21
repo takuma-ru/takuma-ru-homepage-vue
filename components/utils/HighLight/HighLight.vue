@@ -29,17 +29,18 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
 <style lang="scss" scoped>
 #highLight {
   // 参考：https://codepen.io/equinusocio/pen/KNYOxJ
+
   &, &::after {
-    animation-delay: var(--animation-delay, 2s);
+    animation-delay: var(--animation-delay, 3s);
     animation-iteration-count: var(--iterations, 1);
     animation-duration: var(--duration, 800ms);
     animation-fill-mode: both;
     animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
   }
 
-  --animation-delay: var(--delay, 0);
-  --animation-duration: var(--duration, 800ms);
-  --animation-iterations: var(--iterations, 1);
+  --animation-delay: 500ms;
+  --animation-duration: 1s;
+  --animation-iterations: 1;
 
   position: relative;
   padding: 0rem 1rem;
