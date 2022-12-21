@@ -1,9 +1,9 @@
 <template>
-  <div id="index">
-    <h1 class="my-name">
-      Hi!<br>
-      I'm <HighLight>takuma-ru</HighLight>.
-    </h1>
+  <div
+    id="works"
+    :class="displayStatusStore.displaySize"
+  >
+    works
   </div>
 </template>
 
@@ -11,11 +11,11 @@
 /* -- type, interface -- */
 
 /* -- store -- */
+const displayStatusStore = useDisplayStatusStore()
 
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
-const displayStatusStore = useDisplayStatusStore()
 
 /* -- function -- */
 
@@ -23,19 +23,23 @@ const displayStatusStore = useDisplayStatusStore()
 
 /* -- life cycle -- */
 definePageMeta({
-  title: 'Index',
-  layout: 'top'
+  title: 'Works'
 })
 </script>
 
 <style lang="scss" scoped>
-#index {
-  .my-name {
-    position: absolute;
-    top: 50%;
+#works {
 
-    transform: translateY(-50%);
-    font-size: 3rem;
+  &.pc {
+
+  }
+
+  &.lp {
+
+  }
+
+  &.sm {
+
   }
 }
 </style>

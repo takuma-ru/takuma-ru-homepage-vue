@@ -21,7 +21,9 @@ const colorMode = useColorModeStore()
 /* -- variable(ref, reactive, computed) -- */
 const displayStatusStore = useDisplayStatusStore()
 const layout = computed(() => {
-  if (displayStatusStore.displaySize === 'sm') {
+  if (useRoute().fullPath === '/') {
+    return 'top'
+  } else if (displayStatusStore.displaySize === 'sm') {
     return 'smartphone'
   } else {
     return 'default'
