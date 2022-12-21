@@ -52,4 +52,8 @@ html, body {
   background-color: v-bind("colorStore.color.theme.background");
   color: v-bind("colorStore.color.theme.text");
 }
+
+p {
+  font-family: 'Noto Sans JP', sans-serif;
+}
 </style>

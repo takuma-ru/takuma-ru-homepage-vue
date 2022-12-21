@@ -4,14 +4,14 @@ export const useColorStore = defineStore('color', () => {
   /* -- state -- */
   const color = ref<ColorsInterface>({
     white: {
-      default: '#FCFCF9',
+      default: '#FFFFFF',
       lighten: {
         1: '#FFFFF1',
         2: '#FFFFEE'
       },
       darken: {
-        1: '#F2F2F2',
-        2: '#E9E9E0'
+        1: '#f6f8fa',
+        2: '#DDDDCB'
       }
     },
     black: {
@@ -21,8 +21,9 @@ export const useColorStore = defineStore('color', () => {
         2: '#CBCAC7'
       },
       darken: {
-        1: '#2B2B2B',
-        2: '#171717'
+        1: '#4D4D4D',
+        2: '#2C2C2C',
+        3: '#1A1A1A'
       }
     },
     red: {
@@ -72,22 +73,22 @@ export const useColorStore = defineStore('color', () => {
     theme: {
       text: '#030300',
       subText: '#676764',
-      background: '#F2F2F2',
+      background: '#f6f8fa',
       lighten: {
         1: '#676764',
         2: '#CBCAC7'
       },
       darken: {
-        1: '#2B2B2B',
-        2: '#171717'
+        1: '#4D4D4D',
+        2: '#2C2C2C'
       },
       complementaryLighten: {
         1: '#FFFFF1',
         2: '#FFFFEE'
       },
       complementaryDarken: {
-        1: '#F2F2F2',
-        2: '#E9E9E0'
+        1: '#f6f8fa',
+        2: '#DDDDCB'
       }
     }
   })
@@ -104,7 +105,8 @@ export const useColorStore = defineStore('color', () => {
       },
       darken: {
         1: color.value.black.darken[1],
-        2: color.value.black.darken[2]
+        2: color.value.black.darken[2],
+        3: color.value.black.darken[3]
       },
       complementaryLighten: {
         1: color.value.white.lighten[1],
@@ -121,7 +123,7 @@ export const useColorStore = defineStore('color', () => {
     color.value.theme = {
       text: color.value.white.darken[2],
       subText: color.value.black.lighten[2],
-      background: color.value.black.darken[2],
+      background: color.value.black.darken[3],
       lighten: {
         1: color.value.white.lighten[1],
         2: color.value.white.lighten[2]
@@ -136,7 +138,8 @@ export const useColorStore = defineStore('color', () => {
       },
       complementaryDarken: {
         1: color.value.black.darken[1],
-        2: color.value.black.darken[2]
+        2: color.value.black.darken[2],
+        3: color.value.black.darken[3]
       }
     }
   }

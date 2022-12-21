@@ -40,6 +40,7 @@ export default defineNuxtConfig({
 
   components: {
     dirs: [
+      'components/logos',
       'components/layouts',
       'components/utils'
     ]

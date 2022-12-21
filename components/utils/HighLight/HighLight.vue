@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
     right: 0;
     bottom: 0;
     background-color: v-bind("props.color");
-    border-radius: 0rem;
+    border-radius: 0.25rem;
     overflow: hidden;
     transform: scaleX(0);
     transform-origin: 0 50%;

@@ -1,9 +1,15 @@
 <template>
   <div id="index">
-    <h1 class="my-name">
-      Hi!<br>
-      I'm <HighLight>takuma-ru</HighLight>.
-    </h1>
+    <div class="title">
+      <h1 class="my-name">
+        Hi!<br>
+        I'm <HighLight>takuma-ru</HighLight>.
+      </h1>
+      <SocialMediaButon
+        id="takumaru_2222"
+        media-name="twitter"
+      />
+    </div>
   </div>
 </template>
 
@@ -30,12 +36,17 @@ definePageMeta({
 
 <style lang="scss" scoped>
 #index {
-  .my-name {
+  .title {
+    display: grid;
+
     position: absolute;
     top: 50%;
 
     transform: translateY(-50%);
-    font-size: 3rem;
+
+    .my-name {
+      font-size: 3rem;
+    }
   }
 }
 </style>

@@ -18,9 +18,7 @@
         :wght="props.iconProps?.wght"
         :style="!isIcon && 'margin-right: 0.4rem'"
       />
-      <span>
-        <slot />
-      </span>
+      <slot />
     </div>
   </button>
 </template>
