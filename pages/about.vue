@@ -25,6 +25,11 @@
         is
         <HighLight>a technical college student</HighLight>
       </h1>
+      <p class="text">
+        I am currently a student at a National Institute of Technology College.<br>
+        I am majoring in Information Processing and Software Development.<br>
+        I am especially knowledgeable about web-related topics and develop web applications for my research and hobby.<br>
+      </p>
     </div>
     <div class="good">
     </div>
@@ -69,26 +74,24 @@ definePageMeta({
       font-size: 3rem;
       color: v-bind("colorStore.color.theme.text");
     }
-
-    .text {
-      font-size: 1.5rem;
-    }
   }
 
-  &.pc {
+  &.pc, &.lp {
     .name, .occupation, .good, .skill {
       padding: 2rem 0px;
-    }
-  }
 
-  &.lp {
-    .name, .occupation, .good, .skill {
-      padding: 2rem 0px;
+      .text {
+        font-size: 1.5rem;
+      }
     }
   }
 
   &.sm {
-
+    .name, .occupation, .good, .skill {
+      .text {
+        font-size: 1rem;
+      }
+    }
   }
 }
 </style>
