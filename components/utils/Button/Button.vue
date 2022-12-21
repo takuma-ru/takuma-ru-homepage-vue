@@ -12,13 +12,15 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="!isIcon ? dependsLuminanceColor(color) : undefined"
+        :color="isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="props.iconProps?.wght"
         :style="!isIcon && 'margin-right: 0.4rem'"
       />
-      <slot />
+      <span>
+        <slot />
+      </span>
     </div>
   </button>
 </template>
@@ -99,8 +101,12 @@ const click = () => {
     text-align: center;
     font-size: 16px;
     font-weight: 500;
-    color: v-bind('dependsLuminanceColor(props.color)');
+    color: v-bind("props.color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(props.color)");
     white-space: nowrap;
+
+    span {
+      line-height: 24px;
+    }
   }
 
   &:hover::before {

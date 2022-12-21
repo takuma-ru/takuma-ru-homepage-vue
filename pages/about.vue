@@ -1,9 +1,9 @@
 <template>
-  <div id="smartphone-layout">
-    <Header />
-    <div class="contents">
-      <slot />
-    </div>
+  <div
+    id="about"
+    :class="displayStatusStore.displaySize"
+  >
+    about
   </div>
 </template>
 
@@ -11,6 +11,7 @@
 /* -- type, interface -- */
 
 /* -- store -- */
+const displayStatusStore = useDisplayStatusStore()
 
 /* -- props, emit -- */
 
@@ -21,21 +22,24 @@
 /* -- watch -- */
 
 /* -- life cycle -- */
+definePageMeta({
+  title: 'takuma-ru｜About'
+})
 </script>
 
 <style lang="scss" scoped>
-#smartphone-layout {
-  display: grid;
-  grid-template-rows: 64px 1fr;
+#about {
 
-  position: relative;
-  width: 100%;
-  height: 100%;
+  &.pc {
 
-  .contents {
-    grid-row: 2;
+  }
 
-    padding: 1em;
+  &.lp {
+
+  }
+
+  &.sm {
+
   }
 }
 </style>

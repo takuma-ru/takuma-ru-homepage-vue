@@ -1,6 +1,6 @@
 type ColorModeType = 'light' | 'dark'
 
-export const useColorModeStore = () => {
+export const useColorModeStore = defineStore('colorMode', () => {
   const colorstore = useColorStore()
 
   /* -- state -- */
@@ -49,4 +49,4 @@ export const useColorModeStore = () => {
     switchMode,
     setSytemMode
   }
-}
+})

@@ -1,5 +1,6 @@
 <template>
   <div id="default-layout">
+    <Header />
     <div class="contents">
       <slot />
     </div>
@@ -13,13 +14,15 @@
 <style lang="scss" scoped>
 #default-layout {
   display: grid;
-  grid-template-columns: 64px 1fr;
+  grid-template-rows: 64px 1fr;
 
   position: relative;
   width: 100%;
   height: 100%;
 
   .contents {
+    grid-row: 2;
+
     padding: 1em;
   }
 }

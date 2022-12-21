@@ -19,9 +19,9 @@ const colorMode = useColorModeStore()
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
-const { displayType } = displayStatus()
+const displayStatusStore = useDisplayStatusStore()
 const layout = computed(() => {
-  if (displayType.value === 'sm') {
+  if (displayStatusStore.displaySize === 'sm') {
     return 'smartphone'
   } else {
     return 'default'

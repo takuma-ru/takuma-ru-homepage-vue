@@ -1,10 +1,10 @@
 /**
  * 現在のスクリーンの状態を元に動作する変数・関数群
  */
-export const displayStatus = () => {
+export const useDisplayStatusStore = defineStore('displayStatus', () => {
   const breakpoints = useBreakpoints({
     sm: 640,
-    lp: 1025
+    lp: 1025 /* 864 + 240 + 240 */
   })
 
   /**
@@ -24,14 +24,14 @@ export const displayStatus = () => {
    * 現在のスクリーンタイプ
    * @return `'sm' | 'lp' | 'pc'`
    */
-  const displaySize = computed(() => {
+  const displaySize = useState('displayType', () => computed(() => {
     return sm.value ? 'sm' : lp.value ? 'lp' : 'pc'
-  })
+  }))
 
   /**
    * スクリーンタイプに応じてCSSを返す`<style>`v-bind向け関数
    * @example
-   * v-bind("displaySizeMixin({ sm: 'red', lp: 'blue', pc: 'green' })")
+   * v-bind("displayTypeMixin({ sm: 'red', lp: 'blue', pc: 'green' })")
    * @param sm `sm`の場合に適用させたいCSS
    * @param lp `lp`の場合に適用させたいCSS
    * @param pc `pc`の場合に適用させたいCSS
@@ -49,10 +49,10 @@ export const displayStatus = () => {
   }
 
   return {
-    sm,
-    lp,
-    pc,
-    displaySize,
+    sm: readonly(sm),
+    lp: readonly(lp),
+    pc: readonly(pc),
+    displaySize: readonly(displaySize),
     displaySizeMixin
   }
-}
+})

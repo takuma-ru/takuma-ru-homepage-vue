@@ -29,12 +29,11 @@ export interface I<%= h.changeCase.pascal(componentName) %>Emits {
 const props = withDefaults(defineProps<I<%= h.changeCase.pascal(componentName) %>Props>(), {
   modelValue: false
 })
-
 <% } -%>
 <% if (isEmit) { -%>
 const emit = defineEmits<I<%= h.changeCase.pascal(componentName) %>Emits>()
-
 <% } -%>
+
 /* -- variable(ref, reactive, computed) -- */
 <% if (isProps && isEmit) { -%>
 const vModel = useVModel(props, 'modelValue', emit)
