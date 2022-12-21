@@ -7,9 +7,11 @@
     }"
   >
     <Twitter v-if="mediaName === 'twitter'" />
+    <Instagram v-if="mediaName === 'instagram'" />
+    <GitHub v-if="mediaName === 'github'" />
     <hr>
     <p>
-      @{{ id }}
+      @{{ uid }}
     </p>
   </Button>
 </template>
@@ -18,7 +20,7 @@
 /* -- type, interface -- */
 export interface ISocialMediaButonProps {
   mediaName: 'twitter' | 'github' | 'instagram' | 'wantedly' | 'bitbucket';
-  id: string
+  uid: string
 }
 
 /* -- store -- */

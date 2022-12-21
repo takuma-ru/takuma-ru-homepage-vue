@@ -5,15 +5,24 @@
         Hi!<br>
         I'm <HighLight>takuma-ru</HighLight>.
       </h1>
-      <SocialMediaButon
-        id="takumaru_2222"
-        media-name="twitter"
-      />
+      <div class="media">
+        <SocialMediaButon
+          v-for="mediaData in mediaDataList"
+          :key="mediaData.mediaName"
+          :uid="mediaData.uid"
+          :media-name="mediaData.mediaName"
+          :style="{
+            marginBottom: '1rem'
+          }"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ISocialMediaButonProps } from '~/components/utils/SocialMediaButon/SocialMediaButon.vue'
+
 /* -- type, interface -- */
 
 /* -- store -- */
@@ -22,6 +31,20 @@
 
 /* -- variable(ref, reactive, computed) -- */
 const displayStatusStore = useDisplayStatusStore()
+const mediaDataList = ref<Array<ISocialMediaButonProps>>([
+  {
+    uid: 'takuma-ru',
+    mediaName: 'github'
+  },
+  {
+    uid: 'takumaru_2222',
+    mediaName: 'twitter'
+  },
+  {
+    uid: 'nekoo_2222',
+    mediaName: 'instagram'
+  }
+])
 
 /* -- function -- */
 
@@ -46,6 +69,11 @@ definePageMeta({
 
     .my-name {
       font-size: 3rem;
+    }
+
+    .media {
+      display: flex;
+      flex-flow: column;
     }
   }
 }
