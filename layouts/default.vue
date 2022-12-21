@@ -23,7 +23,9 @@
   .contents {
     grid-row: 2;
 
-    padding: 1em;
+    padding: 0rem 4em;
+
+    overflow-y: auto;
   }
 }
 </style>

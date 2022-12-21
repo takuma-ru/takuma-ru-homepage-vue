@@ -36,6 +36,8 @@
     grid-row: 2;
 
     padding: 1em;
+
+    overflow-y: auto;
   }
 }
 </style>

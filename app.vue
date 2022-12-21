@@ -35,7 +35,7 @@ const layout = computed(() => {
 /* -- watch -- */
 
 /* -- life cycle -- */
-colorMode.setSytemMode()
+colorMode.setLight()
 
 </script>
 
@@ -44,6 +44,23 @@ html, body {
   margin: 0px;
 
   font-family: 'Noto Sans JP', sans-serif;
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-color: v-bind("colorMode.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
+    background-clip: content-box;
+  }
 }
 
 #app {

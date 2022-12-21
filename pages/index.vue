@@ -45,8 +45,6 @@
 /* -- type, interface -- */
 
 /* -- store -- */
-const displayStatusStore = useDisplayStatusStore()
-const colorStore = useColorStore()
 
 /* -- props, emit -- */
 

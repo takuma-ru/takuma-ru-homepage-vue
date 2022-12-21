@@ -44,7 +44,6 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
 
   position: relative;
   padding: 0rem 1rem;
-  /* margin: 0rem 0.5rem; */
 
   white-space: nowrap;
   animation-name: clip-text;
@@ -53,7 +52,8 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
     content: "";
     z-index: 999;
     position: absolute;
-    left: 0rem;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
 
@@ -66,8 +66,8 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
     content: "";
     position: absolute;
     z-index: 998;
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     right: 0;
