@@ -1,6 +1,6 @@
 <template>
   <div id="top-layout">
-    <div class="contents">
+    <div id="contents">
       <slot />
     </div>
   </div>
@@ -19,8 +19,9 @@
   width: 100%;
   height: 100%;
 
-  .contents {
+  #contents {
     padding: 2rem;
+    scroll-behavior: smooth;
   }
 }
 </style>

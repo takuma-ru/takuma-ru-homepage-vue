@@ -36,11 +36,12 @@ export interface IButtonProps {
   disabled?: boolean
   icon?: IconNameType
   iconProps?: IIconProps
-  color?: string
+  color?: 'transparent' | string
   size?: 'small' | 'normal' | 'large'
   fab?: boolean
   isIcon?: boolean
   outlined? :boolean
+  fitContent?: boolean
   to?: string
 }
 
@@ -75,7 +76,7 @@ const click = () => {
 <style lang="scss" scoped>
 #Button {
   position: relative;
-  width: auto;
+  width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
   height: 100%;
 
   border: none;
@@ -197,17 +198,17 @@ const click = () => {
   }
 
   &[size = "small"] {
-    width: auto;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
     height: 24px;
   }
 
   &[size = "normal"] {
-    width: auto;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
     height: 40px;
   }
 
   &[size = "large"] {
-    width: auto;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
     height: 64px;
     border-radius: 16px;
 

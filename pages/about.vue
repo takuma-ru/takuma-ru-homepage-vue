@@ -4,6 +4,7 @@
     :class="displayStatusStore.displaySize"
   >
     <div
+      ref="name"
       class="name"
     >
       <h1>
@@ -21,9 +22,18 @@
         I also like to create things, so I became a web engineer because I can create various tangible things with a single PC.<br>
         Best regards.
       </p>
+      <Button
+        fit-content
+        :color="colorStore.color.theme.text"
+        icon="south"
+        @click="scrollToRef(occupation)"
+      >
+        Go to Next
+      </Button>
     </div>
 
     <div
+      ref="occupation"
       class="occupation"
     >
       <h1>
@@ -39,9 +49,18 @@
         I am majoring in Information Processing and Software Development.<br>
         I am especially knowledgeable about web-related topics and develop web applications for my research and hobby.<br>
       </p>
+      <Button
+        fit-content
+        :color="colorStore.color.theme.text"
+        icon="south"
+        @click="scrollToRef(good)"
+      >
+        Go to Next
+      </Button>
     </div>
 
     <div
+      ref="good"
       class="good"
     >
       <h1>
@@ -55,9 +74,18 @@
       <p class="text">
         aaaaa
       </p>
+      <Button
+        fit-content
+        :color="colorStore.color.theme.text"
+        icon="south"
+        @click="scrollToRef(skill)"
+      >
+        Go to Next
+      </Button>
     </div>
 
     <div
+      ref="skill"
       class="skill"
     >
       <h1>
@@ -77,6 +105,14 @@
       <p class="text">
         aaaaa
       </p>
+      <Button
+        fit-content
+        :color="colorStore.color.theme.text"
+        icon="vertical_align_top"
+        @click="scrollToRef(name)"
+      >
+        Go to Top
+      </Button>
     </div>
   </div>
 </template>
@@ -89,8 +125,19 @@ const displayStatusStore = useDisplayStatusStore()
 const colorStore = useColorStore()
 
 /* -- variable(ref, reactive, computed) -- */
+const name = ref<HTMLElement>()
+const occupation = ref<HTMLElement>()
+const good = ref<HTMLElement>()
+const skill = ref<HTMLElement>()
 
 /* -- function -- */
+const scrollToRef = (toRef?: HTMLElement) => {
+  const contentsElement = document.getElementById('contents')
+  contentsElement!.scrollTo({
+    top: (contentsElement?.scrollTop ? contentsElement?.scrollTop : 0) + toRef!.getBoundingClientRect().top - 64,
+    behavior: 'smooth'
+  })
+}
 
 /* -- watch -- */
 
@@ -102,9 +149,12 @@ definePageMeta({
 
 <style lang="scss" scoped>
 #about {
-
   .name, .occupation, .good, .skill {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
     height: calc(100vh - 64px - 4rem);
+    padding: 2rem 0px;
 
     h1 {
       color: v-bind("colorStore.color.theme.subText");
@@ -115,20 +165,15 @@ definePageMeta({
       font-size: 3rem;
       color: v-bind("colorStore.color.theme.text");
     }
-  }
 
-  &.pc, &.lp {
-    .name, .occupation, .good, .skill {
-      padding: 2rem 0px;
-
-      .text {
-        font-size: 1.5rem;
-      }
+    .text {
+      font-size: 1.5rem;
     }
   }
 
   &.sm {
     .name, .occupation, .good, .skill {
+
       .text {
         font-size: 1rem;
       }

@@ -1,7 +1,7 @@
 <template>
   <div id="smartphone-layout">
     <Header />
-    <div class="contents">
+    <div id="contents">
       <slot />
     </div>
   </div>
@@ -32,12 +32,13 @@
   width: 100%;
   height: 100%;
 
-  .contents {
+  #contents {
     grid-row: 2;
 
-    padding: 1em;
+    padding: 0px 1em;
 
     overflow-y: auto;
+    scroll-behavior: smooth;
   }
 }
 </style>
