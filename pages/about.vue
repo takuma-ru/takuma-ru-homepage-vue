@@ -8,7 +8,9 @@
     >
       <h1>
         my
-        <HighLight :color="colorStore.color.red.default">name</HighLight>
+        <HighLight :border-color="colorStore.color.red.default">
+          name
+        </HighLight>
         is
         <HighLight>takuma-ru</HighLight>
       </h1>
@@ -26,7 +28,9 @@
     >
       <h1>
         my
-        <HighLight :color="colorStore.color.red.default">occupation</HighLight>
+        <HighLight :border-color="colorStore.color.red.default">
+          occupation
+        </HighLight>
         is
         <HighLight>NITC student</HighLight>
       </h1>
@@ -42,7 +46,9 @@
     >
       <h1>
         I'm
-        <HighLight :color="colorStore.color.red.default">good</HighLight>
+        <HighLight :border-color="colorStore.color.red.default">
+          good
+        </HighLight>
         at
         <HighLight>web font-end</HighLight>
       </h1>
@@ -56,7 +62,9 @@
     >
       <h1>
         My
-        <HighLight :color="colorStore.color.red.default">skill</HighLight>
+        <HighLight :border-color="colorStore.color.red.default">
+          skill
+        </HighLight>
         are
         <HighLight>web, unity, and more</HighLight>
       </h1>
