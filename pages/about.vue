@@ -193,10 +193,13 @@ definePageMeta({
 
   &.sm {
     .name, .occupation, .good, .skill {
-
       .text {
         font-size: 1rem;
       }
+    }
+
+    .skill {
+      padding-bottom: 4rem;
     }
   }
 }
