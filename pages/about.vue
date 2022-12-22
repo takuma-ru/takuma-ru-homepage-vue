@@ -150,12 +150,14 @@ const name = ref<HTMLElement>()
 const occupation = ref<HTMLElement>()
 const good = ref<HTMLElement>()
 const skill = ref<HTMLElement>()
+const contentsElement = ref<HTMLElement | null>()
+const currentRef = ref<'name' | 'occupation' | 'good' | 'skill'>('name')
 
 /* -- function -- */
 const scrollToRef = (toRef?: HTMLElement) => {
-  const contentsElement = document.getElementById('contents')
-  contentsElement!.scrollTo({
-    top: (contentsElement?.scrollTop ? contentsElement?.scrollTop : 0) + toRef!.getBoundingClientRect().top - 64,
+  currentRef.value = toRef?.className as 'name' | 'occupation' | 'good' | 'skill'
+  contentsElement.value!.scrollTo({
+    top: (contentsElement.value?.scrollTop ? contentsElement.value?.scrollTop : 0) + toRef!.getBoundingClientRect().top - 64,
     behavior: 'smooth'
   })
 }
@@ -163,6 +165,10 @@ const scrollToRef = (toRef?: HTMLElement) => {
 /* -- watch -- */
 
 /* -- life cycle -- */
+onMounted(() => {
+  contentsElement.value = document.getElementById('contents')
+})
+
 definePageMeta({
   title: 'takuma-ru｜About'
 })
