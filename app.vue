@@ -51,8 +51,8 @@ html, body {
   }
 
   ::-webkit-scrollbar-track {
-      background-color: transparent;
-      border-radius: 2px;
+    background-color: transparent;
+    border-radius: 2px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -60,6 +60,10 @@ html, body {
     border-radius: 8px;
     background-color: v-bind("colorMode.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
     background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
   }
 }
 

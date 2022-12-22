@@ -66,7 +66,13 @@
           skill
         </HighLight>
         are
-        <HighLight>web, unity, and more</HighLight>
+        <HighLight :style="{ marginRight: '1rem' }">
+          web
+        </HighLight>
+        <HighLight :style="{ marginRight: '1rem' }">
+          unity
+        </HighLight>
+        <HighLight>and ...</HighLight>
       </h1>
       <p class="text">
         aaaaa
