@@ -18,13 +18,18 @@
 /* -- type, interface -- */
 export interface IHighLightProps {
   borderColor: string
+  /**
+   * millisecond
+   */
+  delay: number | string
 }
 
 /* -- store -- */
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IHighLightProps>(), {
-  borderColor: '#5498ff'
+  borderColor: '#5498ff',
+  delay: 500
 })
 
 /* -- variable(ref, reactive, computed) -- */
@@ -75,7 +80,7 @@ onUnmounted(() => {
       animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
     }
 
-    --animation-delay: 500ms;
+    --animation-delay: v-bind("props.delay + 'ms'");
     --animation-duration: 1s;
     --animation-iterations: 1;
 

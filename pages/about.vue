@@ -13,7 +13,9 @@
           name
         </HighLight>
         is
-        <HighLight>takuma-ru</HighLight>
+        <HighLight delay="1200">
+          takuma-ru
+        </HighLight>
       </h1>
       <p class="text">
         I am a Japanese who loves 🐈 and programming.<br>
@@ -42,7 +44,9 @@
           occupation
         </HighLight>
         is
-        <HighLight>NITC student</HighLight>
+        <HighLight delay="1200">
+          NITC student
+        </HighLight>
       </h1>
       <p class="text">
         I am currently a student at a National Institute of Technology College.<br>
@@ -69,7 +73,9 @@
           good
         </HighLight>
         at
-        <HighLight>web font-end</HighLight>
+        <HighLight delay="1200">
+          web font-end
+        </HighLight>
       </h1>
       <p class="text">
         aaaaa
@@ -94,13 +100,25 @@
           skill
         </HighLight>
         are
-        <HighLight :style="{ marginRight: '1rem' }">
+        <HighLight
+          delay="1200"
+          :style="{
+            marginRight: '1rem'
+          }"
+        >
           web
         </HighLight>
-        <HighLight :style="{ marginRight: '1rem' }">
+        <HighLight
+          delay="1500"
+          :style="{
+            marginRight: '1rem'
+          }"
+        >
           unity
         </HighLight>
-        <HighLight>and ...</HighLight>
+        <HighLight delay="1800">
+          and ...
+        </HighLight>
       </h1>
       <p class="text">
         aaaaa
@@ -157,13 +175,12 @@ definePageMeta({
     padding: 2rem 0px;
 
     h1 {
-      color: v-bind("colorStore.color.theme.subText");
+      color: v-bind("colorStore.color.theme.text");
       line-height: 4.5rem;
     }
 
     .highLight {
       font-size: 3rem;
-      color: v-bind("colorStore.color.theme.text");
     }
 
     .text {

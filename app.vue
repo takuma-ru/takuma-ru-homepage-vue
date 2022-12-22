@@ -15,11 +15,11 @@ registerSW()
 /* -- store -- */
 const colorStore = useColorStore()
 const colorMode = useColorModeStore()
+const displayStatusStore = useDisplayStatusStore()
 
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
-const displayStatusStore = useDisplayStatusStore()
 const layout = computed(() => {
   if (useRoute().fullPath === '/') {
     return 'top'
@@ -28,6 +28,14 @@ const layout = computed(() => {
   } else {
     return 'default'
   }
+})
+
+const svh = computed(() => {
+  const getSvh = () => {
+    return window.innerHeight * 0.01
+  }
+  useEventListener(window, 'resize', getSvh)
+  return getSvh()
 })
 
 /* -- function -- */
@@ -68,8 +76,9 @@ html, body {
 }
 
 #app {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
+  height: calc(var(v-bind("svh"), 1vh) * 100);
   background-color: v-bind("colorStore.color.theme.background");
   color: v-bind("colorStore.color.theme.text");
 }
