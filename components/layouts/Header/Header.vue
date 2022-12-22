@@ -49,13 +49,12 @@
 
 /* -- store -- */
 const colorModeStore = useColorModeStore()
-
 const colorStore = useColorStore()
-
-/* -- props, emit -- */
-/* -- variable(ref, reactive, computed) -- */
 const displayStatusStore = useDisplayStatusStore()
 
+/* -- props, emit -- */
+
+/* -- variable(ref, reactive, computed) -- */
 const {
   pathList
 } = usePath()
@@ -73,7 +72,7 @@ const {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
 
-  padding: 0px 1rem;
+  padding: v-bind("displayStatusStore.displaySizeMixin({sm: '0px 1rem', lp: '0px 4rem', pc: '0px 4rem'})");
 
   .left-contents {
     display: flex;
