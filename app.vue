@@ -30,13 +30,9 @@ const layout = computed(() => {
   }
 })
 
-const svh = computed(() => {
-  const getSvh = () => {
-    return window.innerHeight * 0.01
-  }
-  useEventListener(window, 'resize', getSvh)
-  return getSvh()
-})
+const {
+  svh
+} = useSvh()
 
 /* -- function -- */
 

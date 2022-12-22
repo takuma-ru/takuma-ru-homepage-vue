@@ -143,6 +143,9 @@ const displayStatusStore = useDisplayStatusStore()
 const colorStore = useColorStore()
 
 /* -- variable(ref, reactive, computed) -- */
+const {
+  svh
+} = useSvh()
 const name = ref<HTMLElement>()
 const occupation = ref<HTMLElement>()
 const good = ref<HTMLElement>()
@@ -171,7 +174,7 @@ definePageMeta({
     display: grid;
     grid-template-rows: auto 1fr auto;
 
-    height: calc(100vh - 64px - 4rem);
+    height: calc(v-bind("svh") * 100 - 64px - 4rem);
     padding: 2rem 0px;
 
     h1 {
