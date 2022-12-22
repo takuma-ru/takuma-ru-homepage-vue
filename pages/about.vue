@@ -3,7 +3,9 @@
     id="about"
     :class="displayStatusStore.displaySize"
   >
-    <div class="name">
+    <div
+      class="name"
+    >
       <h1>
         my
         <HighLight :color="colorStore.color.red.default">name</HighLight>
@@ -18,12 +20,15 @@
         Best regards.
       </p>
     </div>
-    <div class="occupation">
+
+    <div
+      class="occupation"
+    >
       <h1>
         my
         <HighLight :color="colorStore.color.red.default">occupation</HighLight>
         is
-        <HighLight>a technical college student</HighLight>
+        <HighLight>NITC student</HighLight>
       </h1>
       <p class="text">
         I am currently a student at a National Institute of Technology College.<br>
@@ -31,9 +36,33 @@
         I am especially knowledgeable about web-related topics and develop web applications for my research and hobby.<br>
       </p>
     </div>
-    <div class="good">
+
+    <div
+      class="good"
+    >
+      <h1>
+        I'm
+        <HighLight :color="colorStore.color.red.default">good</HighLight>
+        at
+        <HighLight>web font-end</HighLight>
+      </h1>
+      <p class="text">
+        aaaaa
+      </p>
     </div>
-    <div class="skill">
+
+    <div
+      class="skill"
+    >
+      <h1>
+        My
+        <HighLight :color="colorStore.color.red.default">skill</HighLight>
+        are
+        <HighLight>web, unity, and more</HighLight>
+      </h1>
+      <p class="text">
+        aaaaa
+      </p>
     </div>
   </div>
 </template>
@@ -44,8 +73,6 @@
 /* -- store -- */
 const displayStatusStore = useDisplayStatusStore()
 const colorStore = useColorStore()
-
-/* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
 
@@ -70,7 +97,7 @@ definePageMeta({
       line-height: 4.5rem;
     }
 
-    #highLight {
+    .highLight {
       font-size: 3rem;
       color: v-bind("colorStore.color.theme.text");
     }

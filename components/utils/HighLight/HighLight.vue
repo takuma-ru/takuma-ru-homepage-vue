@@ -1,7 +1,11 @@
 <template>
-  <span id="highLight">
-    <slot />
-  </span>
+  <Transition name="highlight-transition" appear>
+    <span
+      class="highLight"
+    >
+      <slot />
+    </span>
+  </Transition>
 </template>
 
 <script lang="ts" setup>
@@ -27,10 +31,10 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
 </script>
 
 <style lang="scss" scoped>
-#highLight {
+.highLight {
   // 参考：https://codepen.io/equinusocio/pen/KNYOxJ
-
-  &, &::after {
+  &,
+  &::after {
     animation-delay: var(--animation-delay, 3s);
     animation-iteration-count: var(--iterations, 1);
     animation-duration: var(--duration, 800ms);
@@ -52,10 +56,10 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
     content: "";
     z-index: 999;
     position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
     border-radius: 0.25rem;
     border: solid 2px v-bind("props.color");
@@ -108,5 +112,34 @@ const props = withDefaults(defineProps<IHighLightProps>(), {
     }
   }
 
+  .highlight-transition {
+    &-enter {
+      &-from {
+        opacity: 0;
+      }
+
+      &-active {
+        transition: all 0.2s ease-out;
+      }
+
+      &-to {
+        opacity: 1;
+      }
+    }
+
+    &-leave {
+      &-from {
+        opacity: 1;
+      }
+
+      &-active {
+        transition: all 0.2s ease-out;
+      }
+
+      &-to {
+        opacity: 0;
+      }
+    }
+  }
 }
 </style>
