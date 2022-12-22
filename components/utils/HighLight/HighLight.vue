@@ -83,6 +83,7 @@ onUnmounted(() => {
     padding: 0rem 1rem;
 
     white-space: nowrap;
+    will-change: clip-path;
     animation-name: clip-text;
 
     &::before {
@@ -112,6 +113,7 @@ onUnmounted(() => {
       background-color: v-bind("props.borderColor");
       border-radius: 0.25rem;
       overflow: hidden;
+      will-change: transform;
       transform: scaleX(0);
       transform-origin: 0 50%;
       pointer-events: none;
