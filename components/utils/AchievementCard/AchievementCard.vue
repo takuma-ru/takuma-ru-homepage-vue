@@ -83,7 +83,7 @@ const moveProductPage = () => {
     left: 0px;
     right: 0px;
 
-    border-radius: 0.5rem;
+    border-radius: 0.85rem;
     background-color: #0000006C;
   }
 

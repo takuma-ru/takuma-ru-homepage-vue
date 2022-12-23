@@ -16,8 +16,8 @@ export default defineNuxtConfig({
         { hid: 'og:url', property: 'og:url', content: 'https://takumaru.dev/' },
         { hid: 'og:title', property: 'og:title', content: 'takumaru homepage' },
         { hid: 'og:description', property: 'og:description', content: 'This is takuma-ru\'s self-introduction and portfolio site.' },
-        { hid: 'og:image', property: 'og:image', content: '/ogp.ong' },
-        { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.ong' },
+        { hid: 'og:image', property: 'og:image', content: '/imgs/ogp.ong' },
+        { hid: 'twitter:image', name: 'twitter:image', content: '/imgs/ogp.ong' },
         { name: 'twitter:card', content: 'summary' },
         { hid: 'twitter:site', name: 'twitter:site', content: '@takumaru_2222' }
       ],

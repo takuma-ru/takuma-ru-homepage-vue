@@ -7,20 +7,23 @@
       fit-content
       icon="chevron_left"
       color="transparent"
+      :style="{
+        marginBottom: '1rem'
+      }"
+      @click="navigateTo('/works')"
     >
       Back to works page
     </Button>
     <div class="imgs">
-      <img :src="productDataStore.searchProductData(route.params.id)?.imgSrc" alt="">
+      <img :src="productDataStore.searchProductData(route.params.id)?.imgSrc[0]" alt="">
     </div>
-    <div>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
-      <h1>aaaaa</h1>
+    <div class="detail">
+      <h1>
+        This product is
+        <HighLight>
+          {{ productDataStore.searchProductData(route.params.id)?.title }}
+        </HighLight>
+      </h1>
     </div>
   </div>
 </template>
@@ -31,6 +34,7 @@
 /* -- store -- */
 const displayStatusStore = useDisplayStatusStore()
 const productDataStore = useProductDataStore()
+const colorStore = useColorStore()
 
 /* -- props, emit -- */
 const route = useRoute()
@@ -56,16 +60,41 @@ definePageMeta({
   height: 100%;
 
   .imgs {
+    position: relative;
     width: 100%;
 
-    img {
-      width: 100%;
-      height: 50vh;
+    border-radius: 1.25rem 1.25rem 0.5rem 0.5rem;
+    overflow: hidden;
 
-      border-radius: 1.25rem 1.25rem 0.25rem 0.25rem;
-      object-fit: cover;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
     }
+
   }
+
+  .detail {
+    padding: 1rem 0px;
+
+    h1 {
+      margin: 0px;
+      margin-bottom: 1rem;
+
+      color: v-bind("colorStore.color.theme.text");
+
+      .highLight {
+        font-size: 2.75rem;
+        line-height: 4.5rem;
+      }
+    }
+
+  }
+
   &.pc {
 
   }
