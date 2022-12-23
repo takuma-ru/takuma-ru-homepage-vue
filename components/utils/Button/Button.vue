@@ -202,6 +202,10 @@ const click = () => {
     height: 32px;
 
     border-radius: 0.4em;
+    &:hover::before {
+      border-radius: 0.3em;
+    }
+
     .text {
       font-weight: 500;
     }

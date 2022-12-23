@@ -4,6 +4,7 @@
     :style="{
       backgroundImage: `url('${imgSrc}')`
     }"
+    @click="moveProductPage"
   >
     <span class="dev-type">
       {{ developmentType }}
@@ -22,23 +23,29 @@
 /* -- type, interface -- */
 export interface IAchievementCardProps {
   developmentType: 'Graduation research' | 'Personal development' | 'Team development' | string
-  title: string
   imgSrc: string
+  productId: string
+  title: string
 }
 
 /* -- store -- */
 const colorStore = useColorStore()
+const colorModeStore = useColorModeStore()
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IAchievementCardProps>(), {
   developmentType: 'developmentType',
-  title: 'Product Title',
-  imgSrc: '/imgs/mock_1.jpg'
+  imgSrc: 'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b',
+  productId: 'testProduct',
+  title: 'Product Title'
 })
 
 /* -- variable(ref, reactive, computed) -- */
 
 /* -- function -- */
+const moveProductPage = () => {
+  navigateTo(`/works/${props.productId}`)
+}
 
 /* -- watch -- */
 
@@ -53,12 +60,14 @@ const props = withDefaults(defineProps<IAchievementCardProps>(), {
 
   position: relative;
   z-index: 2;
-  height: calc(160px - 2rem);
+  height: 160px;
 
   padding: 1rem;
 
   color: v-bind("colorStore.color.white.default");
+  border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[1] : colorStore.color.white.darken[2]");
   border-radius: 0.5rem;
+  box-sizing: border-box;
   background-color: v-bind("colorStore.color.theme.complementaryDarken[2]");
   background-size: cover;
   background-position: center;

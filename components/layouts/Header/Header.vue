@@ -32,7 +32,7 @@
         :key="pathData.path"
         size="small"
         outlined
-        :color="pathData.path === route.fullPath ? colorStore.color.blue.default : 'transparent'"
+        :color="route.path.indexOf(pathData.path) !== -1 ? colorStore.color.blue.default : 'transparent'"
         @click="navigateTo(pathData.path)"
       >
         {{ pathData.title }}
