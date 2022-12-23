@@ -80,5 +80,6 @@ html, body {
 
 p {
   font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
 }
 </style>

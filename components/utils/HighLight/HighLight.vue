@@ -75,7 +75,7 @@ onUnmounted(() => {
     &::after {
       animation-delay: var(--animation-delay, 3s);
       animation-iteration-count: var(--iterations, 1);
-      animation-duration: var(--duration, 800ms);
+      animation-duration: var(--duration, 900ms);
       animation-fill-mode: both;
       animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
     }

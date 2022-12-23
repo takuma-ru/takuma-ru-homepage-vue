@@ -11,7 +11,8 @@ export const useColorStore = defineStore('color', () => {
       },
       darken: {
         1: '#f6f8fa',
-        2: '#DDDDCB'
+        2: '#E2E7EC',
+        3: '#CBCCDD'
       }
     },
     black: {
@@ -121,7 +122,7 @@ export const useColorStore = defineStore('color', () => {
 
   const setDarkTheme = () => {
     color.value.theme = {
-      text: color.value.white.darken[1],
+      text: color.value.white.darken[2],
       subText: color.value.black.lighten[2],
       background: color.value.black.darken[3],
       lighten: {

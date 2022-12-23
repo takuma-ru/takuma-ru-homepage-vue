@@ -35,6 +35,7 @@
   #contents {
     grid-row: 2;
 
+    width: calc(100% - 2rem);
     padding: 0px 1em;
 
     overflow-y: auto;

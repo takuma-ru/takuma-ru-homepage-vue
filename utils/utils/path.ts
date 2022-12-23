@@ -12,11 +12,6 @@ export const usePath = () => {
 
   const pathList: Array<IPath> = [
     {
-      title: 'Top',
-      icon: 'home',
-      path: '/'
-    },
-    {
       title: 'About',
       icon: 'person',
       path: '/about'
