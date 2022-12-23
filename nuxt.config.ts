@@ -10,7 +10,16 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '' }
+        { name: 'description', content: 'This is takuma-ru\'s self-introduction and portfolio site.' },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'takumaru.dev' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        { hid: 'og:url', property: 'og:url', content: 'https://takumaru.dev/' },
+        { hid: 'og:title', property: 'og:title', content: 'takumaru homepage' },
+        { hid: 'og:description', property: 'og:description', content: 'This is takuma-ru\'s self-introduction and portfolio site.' },
+        { hid: 'og:image', property: 'og:image', content: '/ogp.ong' },
+        { hid: 'twitter:image', name: 'twitter:image', content: '/ogp.ong' },
+        { name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@takumaru_2222' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/icon_rounded.png' },
@@ -31,13 +40,13 @@ export default defineNuxtConfig({
         {
           rel: 'preload',
           as: 'style',
-          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0'
+          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0&display=swap'
         },
         {
           rel: 'stylesheet',
           media: 'print',
           onload: 'this.media=\'all\'',
-          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0'
+          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0&display=swap'
         },
         {
           rel: 'manifest',
