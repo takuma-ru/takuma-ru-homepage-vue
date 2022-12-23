@@ -210,8 +210,8 @@ definePageMeta({
       color: v-bind("colorStore.color.theme.text");
 
       .highLight {
-        font-size: 3rem;
-        line-height: 5rem;
+        font-size: 2.75rem;
+        line-height: 4.5rem;
       }
     }
 
