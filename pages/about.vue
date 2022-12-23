@@ -180,19 +180,24 @@ definePageMeta({
     display: grid;
     grid-template-rows: auto 1fr auto;
 
-    height: calc(v-bind("svh") * 100 - 64px - 4rem);
+    height: calc((v-bind("svh") * 100) - 64px - 4rem);
     padding: 2rem 0px;
 
     h1 {
+      margin: 0px;
+      margin-bottom: 1rem;
+
       color: v-bind("colorStore.color.theme.text");
-      line-height: 4.5rem;
     }
 
     .highLight {
       font-size: 3rem;
+      line-height: 5rem;
     }
 
     .text {
+      margin: 0.5rem 0px;
+
       font-size: 1.5rem;
     }
   }
@@ -205,7 +210,7 @@ definePageMeta({
     }
 
     .skill {
-      padding-bottom: 4rem;
+      margin-bottom: 2rem;
     }
   }
 }
