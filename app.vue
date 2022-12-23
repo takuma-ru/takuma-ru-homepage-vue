@@ -51,8 +51,8 @@ html, body {
   font-family: 'Noto Sans JP', sans-serif;
 
   ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -61,7 +61,7 @@ html, body {
   }
 
   ::-webkit-scrollbar-thumb {
-    border: 4px solid transparent;
+    border: 2px solid transparent;
     border-radius: 8px;
     background-color: v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
     background-clip: content-box;

@@ -37,6 +37,11 @@
       >
         {{ pathData.title }}
       </Button>
+      <Button
+        @click="productDataStore.addMockProductData"
+      >
+        Add mock data
+      </Button>
     </div>
 
     <div class="buttons">
@@ -53,6 +58,7 @@
 const colorModeStore = useColorModeStore()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
+const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
 

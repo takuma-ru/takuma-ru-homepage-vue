@@ -10,6 +10,10 @@
       :img-src="productData.imgSrc"
       :product-id="productData.productId"
       :title="productData.title"
+      :style="{
+        marginRight: displayStatusStore.displaySize !== 'sm' ? '1rem' : 0,
+        marginBottom: '1rem'
+      }"
     />
   </div>
 </template>

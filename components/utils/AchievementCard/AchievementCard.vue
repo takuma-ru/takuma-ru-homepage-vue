@@ -2,7 +2,7 @@
   <div
     id="achievementCard"
     :style="{
-      backgroundImage: `url('${imgSrc}')`
+      backgroundImage: `url('${imgSrc[0]}')`
     }"
     @click="moveProductPage"
   >
@@ -23,7 +23,7 @@
 /* -- type, interface -- */
 export interface IAchievementCardProps {
   developmentType: 'Graduation research' | 'Personal development' | 'Team development' | string
-  imgSrc: string
+  imgSrc: Array<string>
   productId: string
   title: string
 }
@@ -35,7 +35,7 @@ const colorModeStore = useColorModeStore()
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IAchievementCardProps>(), {
   developmentType: 'developmentType',
-  imgSrc: 'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b',
+  imgSrc: () => [ 'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b' ],
   productId: 'testProduct',
   title: 'Product Title'
 })
@@ -55,13 +55,13 @@ const moveProductPage = () => {
 <style lang="scss" scoped>
 #achievementCard {
   display: grid;
-  grid-template-columns: minmax(100%, calc(640px - 2rem));
+  grid-template-columns: minmax(100%, 720px);
   grid-template-rows: min-content min-content 1fr;
 
   position: relative;
   z-index: 2;
   height: 160px;
-  max-width: calc(640px - 2rem);
+  max-width: 720px;
 
   padding: 1rem;
 
