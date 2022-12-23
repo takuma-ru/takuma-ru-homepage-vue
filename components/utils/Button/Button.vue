@@ -190,7 +190,7 @@ const click = () => {
   &[outlined = true] {
     background-color: transparent;
 
-    border: solid 2px v-bind("colorStore.color.theme.subText");
+    border: solid 2px v-bind("props.color");
     .text {
       color: v-bind("colorStore.color.theme.text");
       font-weight: 600;
@@ -199,7 +199,12 @@ const click = () => {
 
   &[size = "small"] {
     width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
-    height: 24px;
+    height: 32px;
+
+    border-radius: 0.4em;
+    .text {
+      font-weight: 500;
+    }
   }
 
   &[size = "normal"] {

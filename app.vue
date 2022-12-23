@@ -73,7 +73,7 @@ html, body {
 #app {
   width: 100vw;
   height: 100vh;
-  height: calc(var(v-bind("svh"), 1vh) * 100);
+  height: calc(v-bind("svh") * 100);
   background-color: v-bind("colorStore.color.theme.background");
   color: v-bind("colorStore.color.theme.text");
 }

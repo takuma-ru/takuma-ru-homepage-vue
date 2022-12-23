@@ -15,7 +15,7 @@
         class="title"
         @click="navigateTo('/')"
       >
-        <img v-if="colorMode === 'dark'" src="/icons/icon-darkmode.png" alt="icon-darkmode">
+        <img v-if="colorModeStore.colorMode === 'dark'" src="/icons/icon-darkmode.png" alt="icon-darkmode">
         <img v-else src="/icons/icon-lightmode.png" alt="icon-lightmode">
         <span>
           takumaru.dev
@@ -30,7 +30,9 @@
       <Button
         v-for="pathData in pathList"
         :key="pathData.path"
-        color="transparent"
+        size="small"
+        outlined
+        :color="pathData.path === route.fullPath ? colorStore.color.blue.default : 'transparent'"
         @click="navigateTo(pathData.path)"
       >
         {{ pathData.title }}
@@ -48,7 +50,7 @@
 /* -- type, interface -- */
 
 /* -- store -- */
-const colorMode = useColorMode()
+const colorModeStore = useColorModeStore()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
 
@@ -58,6 +60,7 @@ const displayStatusStore = useDisplayStatusStore()
 const {
   pathList
 } = usePath()
+const route = useRoute()
 
 /* -- function -- */
 
@@ -107,8 +110,8 @@ const {
     align-items: center;
     justify-content: center;
 
-    .link-buton.text {
-      color: v-bind("colorStore.color.theme.text");
+    button {
+      margin: 0px 0.5rem;
     }
   }
 
