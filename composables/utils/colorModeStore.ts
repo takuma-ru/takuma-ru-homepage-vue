@@ -1,52 +1,40 @@
-type ColorModeType = 'light' | 'dark'
-
 export const useColorModeStore = defineStore('colorMode', () => {
-  const colorstore = useColorStore()
+  const colorStore = useColorStore()
 
   /* -- state -- */
-  const colorMode = useState<ColorModeType>('colorMode', () => 'dark')
+  const colorMode = useColorMode()
 
   /* -- actions -- */
   const setLight = () => {
     colorMode.value = 'light'
-    localStorage.setItem('colorMode', colorMode.value)
   }
 
   const setDark = () => {
     colorMode.value = 'dark'
-    localStorage.setItem('colorMode', colorMode.value)
   }
 
   const switchMode = () => {
     colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark'
-    localStorage.setItem('colorMode', colorMode.value)
-  }
-
-  const setSytemMode = () => {
-    const isDarkMode = usePreferredDark()
-
-    if (isDarkMode.value) {
-      colorMode.value = 'dark'
-      colorstore.setDarkTheme()
-    } else {
-      colorMode.value = 'light'
-      colorstore.setLightTheme()
-    }
   }
 
   watch(colorMode, (newVal) => {
     if (newVal === 'dark') {
-      colorstore.setDarkTheme()
+      colorStore.setDarkTheme()
     } else {
-      colorstore.setLightTheme()
+      colorStore.setLightTheme()
     }
   })
+
+  if (colorMode.value === 'dark') {
+    colorStore.setDarkTheme()
+  } else {
+    colorStore.setLightTheme()
+  }
 
   return {
     colorMode: readonly(colorMode),
     setLight,
     setDark,
-    switchMode,
-    setSytemMode
+    switchMode
   }
 })

@@ -2,7 +2,7 @@
   <Button
     is-icon
     :icon="colorModeStore.colorMode === 'dark' ? 'dark_mode' : 'light_mode'"
-    @click="colorModeStore.switchMode()"
+    @click="switchMode()"
   />
 </template>
 
@@ -17,6 +17,13 @@ const colorModeStore = useColorModeStore()
 /* -- variable(ref, reactive, computed) -- */
 
 /* -- function -- */
+const switchMode = () => {
+  if (colorModeStore.colorMode === 'dark') {
+    colorModeStore.setLight()
+  } else {
+    colorModeStore.setDark()
+  }
+}
 
 /* -- watch -- */
 

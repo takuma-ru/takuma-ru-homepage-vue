@@ -15,7 +15,7 @@
         class="title"
         @click="navigateTo('/')"
       >
-        <img v-if="colorModeStore.colorMode === 'dark'" src="/icons/icon-darkmode.png" alt="icon-darkmode">
+        <img v-if="colorMode === 'dark'" src="/icons/icon-darkmode.png" alt="icon-darkmode">
         <img v-else src="/icons/icon-lightmode.png" alt="icon-lightmode">
         <span>
           takumaru.dev
@@ -48,7 +48,7 @@
 /* -- type, interface -- */
 
 /* -- store -- */
-const colorModeStore = useColorModeStore()
+const colorMode = useColorMode()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
 

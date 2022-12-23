@@ -14,8 +14,8 @@ registerSW()
 
 /* -- store -- */
 const colorStore = useColorStore()
-const colorMode = useColorModeStore()
 const displayStatusStore = useDisplayStatusStore()
+const colorModeStore = useColorModeStore()
 
 /* -- props, emit -- */
 
@@ -39,7 +39,6 @@ const {
 /* -- watch -- */
 
 /* -- life cycle -- */
-colorMode.setLight()
 
 </script>
 
@@ -62,7 +61,7 @@ html, body {
   ::-webkit-scrollbar-thumb {
     border: 4px solid transparent;
     border-radius: 8px;
-    background-color: v-bind("colorMode.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
+    background-color: v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
     background-clip: content-box;
   }
 
