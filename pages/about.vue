@@ -32,7 +32,7 @@
         icon="south"
         @click="scrollToRef(occupation)"
       >
-        Go to Next
+        Click to Next
       </Button>
     </div>
 
@@ -69,7 +69,7 @@
         icon="south"
         @click="scrollToRef(good)"
       >
-        Go to Next
+        Click to Next
       </Button>
     </div>
 
@@ -100,7 +100,7 @@
         icon="south"
         @click="scrollToRef(skill)"
       >
-        Go to Next
+        Click to Next
       </Button>
     </div>
 
@@ -148,7 +148,7 @@
         icon="vertical_align_top"
         @click="scrollToRef(name)"
       >
-        Go to Top
+        Back to Top
       </Button>
     </div>
   </div>
