@@ -3,7 +3,14 @@
     id="works"
     :class="displayStatusStore.displaySize"
   >
-    works
+    <AchievementCard
+      v-for="productData in productDataStore.productDataList"
+      :key="productData.productId"
+      :development-type="productData.developmentType"
+      :img-src="productData.imgSrc"
+      :product-id="productData.productId"
+      :title="productData.title"
+    />
   </div>
 </template>
 
@@ -12,6 +19,7 @@
 
 /* -- store -- */
 const displayStatusStore = useDisplayStatusStore()
+const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
 
@@ -29,14 +37,11 @@ definePageMeta({
 
 <style lang="scss" scoped>
 #works {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
-  &.pc {
-
-  }
-
-  &.lp {
-
-  }
+  padding-top: 2rem;
 
   &.sm {
 

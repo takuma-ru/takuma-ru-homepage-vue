@@ -61,6 +61,7 @@ const moveProductPage = () => {
   position: relative;
   z-index: 2;
   height: 160px;
+  max-width: calc(640px - 2rem);
 
   padding: 1rem;
 

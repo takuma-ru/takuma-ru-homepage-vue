@@ -16,6 +16,7 @@ registerSW()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
 const colorModeStore = useColorModeStore()
+const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
 
@@ -39,6 +40,7 @@ const {
 /* -- watch -- */
 
 /* -- life cycle -- */
+productDataStore.getProductData()
 
 </script>
 
