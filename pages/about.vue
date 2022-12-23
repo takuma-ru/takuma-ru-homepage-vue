@@ -252,7 +252,9 @@ definePageMeta({
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
 
-        font-size: 1rem;
+        .first-contents {
+          font-size: 1rem;
+        }
       }
     }
 
