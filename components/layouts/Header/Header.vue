@@ -31,16 +31,10 @@
         v-for="pathData in pathList"
         :key="pathData.path"
         size="small"
-        outlined
         :color="route.path.indexOf(pathData.path) !== -1 ? colorStore.color.theme.text : 'transparent'"
         @click="navigateTo(pathData.path)"
       >
         {{ pathData.title }}
-      </Button>
-      <Button
-        @click="productDataStore.addMockProductData"
-      >
-        Add mock data
       </Button>
     </div>
 
@@ -58,7 +52,6 @@
 const colorModeStore = useColorModeStore()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
-const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
 

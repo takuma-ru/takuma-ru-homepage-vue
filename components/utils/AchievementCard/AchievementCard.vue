@@ -34,10 +34,10 @@ const colorModeStore = useColorModeStore()
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IAchievementCardProps>(), {
-  developmentType: 'developmentType',
+  developmentType: 'Personal development',
   imgSrc: () => [ 'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b' ],
-  productId: 'testProduct',
-  title: 'Product Title'
+  productId: 'ZBTraN6IoRXfusw6l30N',
+  title: 'CHISK'
 })
 
 /* -- variable(ref, reactive, computed) -- */

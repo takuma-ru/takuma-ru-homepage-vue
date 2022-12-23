@@ -47,9 +47,16 @@ export const useProductDataStore = defineStore('productData', () => {
         ...doc.data()
       } as IProductData
 
-      console.log(doc.id, ' => ', doc.data())
+      /* console.log(doc.id, ' => ', doc.data()) */
       pushProductData(docData)
     })
+  }
+
+  /**
+   * productId から開発物データを検索し返す
+   */
+  const searchProductData = (productId : string | string[]) => {
+    return productDataList.value.find(data => data.productId === productId)
   }
 
   const addMockProductData = () => {
@@ -84,6 +91,7 @@ export const useProductDataStore = defineStore('productData', () => {
   return {
     productDataList: readonly(productDataList),
     getProductData,
+    searchProductData,
     addMockProductData
   }
 })
