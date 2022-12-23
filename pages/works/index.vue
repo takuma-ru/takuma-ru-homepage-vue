@@ -11,7 +11,8 @@
       :product-id="productData.productId"
       :title="productData.title"
       :style="{
-        marginRight: displayStatusStore.displaySize !== 'sm' ? '1rem' : 0,
+        marginRight: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
+        marginLeft: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
         marginBottom: '1rem'
       }"
     />
@@ -41,14 +42,21 @@ definePageMeta({
 
 <style lang="scss" scoped>
 #works {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: space-around;
 
   padding-top: 2rem;
 
-  &.sm {
+  &.pc {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
+  &.lp {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.sm {
+    grid-template-columns: 1fr;
   }
 }
 </style>

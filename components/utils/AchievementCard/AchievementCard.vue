@@ -67,7 +67,7 @@ const moveProductPage = () => {
 
   color: v-bind("colorStore.color.white.default");
   border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[1] : colorStore.color.white.darken[2]");
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   box-sizing: border-box;
   background-color: v-bind("colorStore.color.theme.complementaryDarken[2]");
   background-size: cover;
