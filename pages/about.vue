@@ -54,7 +54,6 @@
         <p class="first-contents">
           I am currently a student at a National Institute of Technology College.<br>
           I am majoring in Information Processing and Software Development.<br>
-          I am especially knowledgeable about web-related topics and develop web applications for my research and hobby.<br>
         </p>
         <div class="second-contents">
           <p class="contents-title">
@@ -90,7 +89,7 @@
       <div class="description">
         <p class="first-contents">
           We are good at implementing the "front end," the part of the Web that the end user touches.<br>
-          In particular, <HighLight>Vue.js (NuxtJs)</HighLight> is the framework I am best at, and I also develop libraries for it!<br>
+          In particular, <HighLight delay="2000">Vue.js (NuxtJs)</HighLight> is the framework I am best at, and I also develop libraries for it!<br>
           Of course I can also do React and Svelte.
         </p>
       </div>
@@ -201,8 +200,8 @@ definePageMeta({
 
     position: relative;
     width: 100%;
-    height: calc((v-bind("svh") * 100) - 64px - 4rem);
-    padding: 2rem 0px;
+    height: calc((v-bind("svh") * 100) - 64px - 2rem);
+    padding: 1rem 0px;
 
     h1 {
       margin: 0px;
@@ -236,10 +235,11 @@ definePageMeta({
         width: 100%;
 
         .contents-title {
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
 
+          text-align: start;
           font-weight: 600;
-          font-size: 1rem;
+          font-size: 0.75rem;
           color: v-bind("colorStore.color.theme.subText");
         }
       }
