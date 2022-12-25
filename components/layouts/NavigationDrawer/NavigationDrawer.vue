@@ -29,7 +29,7 @@
             <HighLight
               v-if="route.path.indexOf(pathData.path) !== -1"
               :border-color="colorStore.color.theme.text"
-              delay="0ms"
+              delay="300ms"
             >
               <span>
                 {{ pathData.title }}
@@ -45,6 +45,7 @@
           icon="arrow_back_ios"
           :color="colorStore.color.white.default"
           class="close-icon"
+          @click="vModel = false"
         />
       </nav>
     </transition>
