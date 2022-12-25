@@ -56,15 +56,17 @@
           <p class="title">
             Links
           </p>
-          <Button
-            v-for="linkData in productData.links"
-            :key="linkData.name"
-            icon="link"
-            :color="colorStore.color.theme.text"
-            :to="linkData.url"
-          >
-            {{ linkData.name }}
-          </Button>
+          <div class="buttons">
+            <Button
+              v-for="linkData in productData.links"
+              :key="linkData.name"
+              icon="link"
+              :color="colorStore.color.theme.text"
+              :to="linkData.url"
+            >
+              {{ linkData.name }}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -162,11 +164,14 @@ definePageMeta({
       margin: 0px;
       margin-bottom: 1rem;
 
-      color: v-bind("colorStore.color.theme.text");
+      font-size: 1.75rem;
+      color: v-bind("colorStore.color.theme.subText");
 
       .highLight {
         font-size: 2.75rem;
         line-height: 4.5rem;
+
+        color: v-bind("colorStore.color.theme.text");
       }
     }
 
@@ -186,6 +191,8 @@ definePageMeta({
         display: flex;
         flex-flow: column;
 
+        margin-bottom: 1rem;
+
         .title {
           margin-top: 0px;
           margin-bottom: 0.5rem;
@@ -195,17 +202,32 @@ definePageMeta({
         }
       }
 
-      .techniques-logo {
-        display: flex;
+      .techniques {
+        .techniques-logo {
+          display: flex;
 
-        img {
-          height: 32px;
+          img {
+            height: 32px;
+          }
         }
       }
 
       .period {
         span {
           font-weight: 600;
+        }
+      }
+
+      .links {
+        grid-column: 1/3;
+
+        .buttons {
+          display: flex;
+          flex-flow: column;
+
+          #Button {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
