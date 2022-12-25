@@ -9,7 +9,9 @@
         is-icon
         icon="menu"
         class="menu-button"
+        @click="openDrawer"
       />
+      <NavigationDrawer v-model:model-value="isOpen" />
 
       <div
         class="title"
@@ -60,8 +62,12 @@ const {
   pathList
 } = usePath()
 const route = useRoute()
+const isOpen = ref(false)
 
 /* -- function -- */
+const openDrawer = () => {
+  isOpen.value = true
+}
 
 /* -- watch -- */
 

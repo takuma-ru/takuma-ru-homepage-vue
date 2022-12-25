@@ -1,15 +1,15 @@
 import { IconNameType } from '~/types/icon/IconNameType'
 
+export interface IPath {
+  title: string
+  icon?: IconNameType
+  path: string
+}
+
 /**
  * path
  */
 export const usePath = () => {
-  interface IPath {
-    title: string
-    icon?: IconNameType
-    path: string
-  }
-
   const pathList: Array<IPath> = [
     {
       title: 'About',
