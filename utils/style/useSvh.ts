@@ -6,6 +6,7 @@ export const useSvh = () => {
 
   const setSvh = () => {
     svh.value = window.innerHeight * 0.01 + 'px'
+    document.documentElement.style.setProperty('--svh', svh.value)
   }
 
   useEventListener(window, 'resize', setSvh)

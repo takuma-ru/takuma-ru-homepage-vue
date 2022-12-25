@@ -31,9 +31,7 @@ const layout = computed(() => {
   }
 })
 
-const {
-  svh
-} = useSvh()
+useSvh()
 
 /* -- function -- */
 
@@ -75,7 +73,8 @@ html, body {
 #app {
   width: 100vw;
   height: 100vh;
-  height: calc(v-bind("svh") * 100);
+  height: calc(var(--svh, 1vh) * 100);
+  max-height: calc(var(--svh, 1vh) * 100);
   background-color: v-bind("colorStore.color.theme.background");
   color: v-bind("colorStore.color.theme.text");
 }

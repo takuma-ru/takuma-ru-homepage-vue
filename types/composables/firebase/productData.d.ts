@@ -3,8 +3,8 @@ import { Timestamp } from "firebase/firestore"
 export interface IProductData {
   description: string | HTMLElement[]
   developmentPeriod: {
-    start: Timestamp | Date
-    end: Timestamp | Date | 'now'
+    start: Timestamp
+    end: Timestamp | 'now'
   }
   developmentType: 'Graduation research' | 'Personal development' | 'Team development' | string
   imgSrc: Array<string>

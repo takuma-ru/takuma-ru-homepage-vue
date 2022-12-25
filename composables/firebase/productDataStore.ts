@@ -1,7 +1,8 @@
 import {
   collection,
   getDocs,
-  getFirestore
+  getFirestore,
+  Timestamp
 } from 'firebase/firestore'
 
 import {
@@ -56,7 +57,32 @@ export const useProductDataStore = defineStore('productData', () => {
    * productId から開発物データを検索し返す
    */
   const searchProductData = (productId : string | string[]) => {
-    return productDataList.value.find(data => data.productId === productId)
+    let productData = productDataList.value.find(data => data.productId === productId) as IProductData
+    if (!productData) {
+      productData = {
+        productId: 'undefined',
+        usedTechniques: [
+          'none'
+        ],
+        imgSrc: [
+          '/imgs/undefined-img.png'
+        ],
+        developmentPeriod: {
+          end: Timestamp.fromDate(new Date()),
+          start: Timestamp.fromDate(new Date())
+        },
+        developmentType: 'undefined',
+        title: '',
+        description: 'undefined',
+        links: [
+          {
+            url: 'https://takumaru.dev',
+            name: 'This site link'
+          }
+        ]
+      }
+    }
+    return productData
   }
 
   const addMockProductData = () => {
@@ -71,8 +97,8 @@ export const useProductDataStore = defineStore('productData', () => {
         'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b'
       ],
       developmentPeriod: {
-        end: new Date(),
-        start: new Date()
+        end: Timestamp.fromDate(new Date()),
+        start: Timestamp.fromDate(new Date())
       },
       developmentType: 'Personal development',
       title: 'CHISK',
