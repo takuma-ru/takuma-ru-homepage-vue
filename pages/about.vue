@@ -59,7 +59,9 @@
           <p class="contents-title">
             track record
           </p>
-          <AchievementCard />
+          <AchievementCard
+            :product-id="productDataStore.searchProductData('ZBTraN6IoRXfusw6l30N').productId"
+          />
         </div>
       </div>
       <Button
@@ -159,6 +161,7 @@
 /* -- store -- */
 const displayStatusStore = useDisplayStatusStore()
 const colorStore = useColorStore()
+const productDataStore = useProductDataStore()
 
 /* -- variable(ref, reactive, computed) -- */
 useSvh()

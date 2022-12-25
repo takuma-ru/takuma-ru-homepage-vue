@@ -2,19 +2,18 @@
   <div
     id="achievementCard"
     :style="{
-      backgroundImage: `url('${imgSrc[0]}')`
+      backgroundImage: `url('${productData.imgSrc[0]}')`
     }"
     @click="moveProductPage"
   >
-    <span class="dev-type">
-      {{ developmentType }}
-    </span>
-    <h2>
-      {{ title }}
-    </h2>
+    <span
+      class="dev-type"
+      v-text="productData.developmentType"
+    />
+    <h2 v-text="productData.title" />
     <div class="bottom-contents">
       <i
-        v-for="techniqueName in usedTechniques"
+        v-for="techniqueName in productData.usedTechniques"
         :key="techniqueName"
         :class="`devicon-${techniqueName}-plain`"
       />
@@ -26,25 +25,23 @@
 
 /* -- type, interface -- */
 export interface IAchievementCardProps {
-  developmentType: 'Graduation research' | 'Personal development' | 'Team development' | string
-  imgSrc: Array<string>
   productId: string
-  title: string,
-  usedTechniques: Array<string>
 }
 
 /* -- store -- */
 const colorStore = useColorStore()
 const colorModeStore = useColorModeStore()
+const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IAchievementCardProps>(), {
-  developmentType: 'Personal development',
-  productId: 'ZBTraN6IoRXfusw6l30N',
-  title: 'CHISK'
+  productId: 'ZBTraN6IoRXfusw6l30N'
 })
 
 /* -- variable(ref, reactive, computed) -- */
+const productData = computed(() => {
+  return productDataStore.searchProductData(props.productId)
+})
 
 /* -- function -- */
 const moveProductPage = () => {
@@ -88,7 +85,7 @@ const moveProductPage = () => {
     right: 0px;
 
     border-radius: 0.65rem;
-    background-color: #0000006C;
+    background-color: #0000009A;
   }
 
   h2 {
@@ -101,8 +98,9 @@ const moveProductPage = () => {
   }
 
   .dev-type {
-    color: v-bind("colorStore.color.white.darken[3]");
+    color: v-bind("colorStore.color.white.darken[2]");
     font-size: 16px;
+    font-weight: 300;
   }
 
   .bottom-contents {
