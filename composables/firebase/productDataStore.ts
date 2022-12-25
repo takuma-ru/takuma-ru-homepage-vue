@@ -62,7 +62,7 @@ export const useProductDataStore = defineStore('productData', () => {
       productData = {
         productId: 'undefined',
         usedTechniques: [
-          'none'
+          'vuejs'
         ],
         imgSrc: [
           '/imgs/undefined-img.png'
@@ -85,39 +85,11 @@ export const useProductDataStore = defineStore('productData', () => {
     return productData
   }
 
-  const addMockProductData = () => {
-    pushProductData({
-      productId: 'aaaa',
-      usedTechniques: [
-        'vue',
-        'ts',
-        'firebase'
-      ],
-      imgSrc: [
-        'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b'
-      ],
-      developmentPeriod: {
-        end: Timestamp.fromDate(new Date()),
-        start: Timestamp.fromDate(new Date())
-      },
-      developmentType: 'Personal development',
-      title: 'CHISK',
-      description: 'This is the first web application I implemented using Vue.js. There are many task management applications in the world. However, none of them are interesting. I didn\'t want to bother creating such a thing, so I added a nurturing element to make it fun to do and implemented it.',
-      links: [
-        {
-          url: 'https://taskmgt.takumaru.dev',
-          name: 'Application link'
-        }
-      ]
-    })
-  }
-
   /* -- other -- */
 
   return {
     productDataList: readonly(productDataList),
     getProductData,
-    searchProductData,
-    addMockProductData
+    searchProductData
   }
 })

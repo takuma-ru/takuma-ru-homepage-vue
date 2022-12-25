@@ -13,7 +13,11 @@
       {{ title }}
     </h2>
     <div class="bottom-contents">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg">
+      <i
+        v-for="techniqueName in usedTechniques"
+        :key="techniqueName"
+        :class="`devicon-${techniqueName}-plain`"
+      />
     </div>
   </div>
 </template>
@@ -25,7 +29,8 @@ export interface IAchievementCardProps {
   developmentType: 'Graduation research' | 'Personal development' | 'Team development' | string
   imgSrc: Array<string>
   productId: string
-  title: string
+  title: string,
+  usedTechniques: Array<string>
 }
 
 /* -- store -- */
@@ -35,7 +40,6 @@ const colorModeStore = useColorModeStore()
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IAchievementCardProps>(), {
   developmentType: 'Personal development',
-  imgSrc: () => [ 'https://firebasestorage.googleapis.com/v0/b/takuma-ru-homepage.appspot.com/o/product_image%2Fchisk%2FfeatureGraphic.png?alt=media&token=d146d2fb-a990-42a5-b6bf-40f3aeb6486b' ],
   productId: 'ZBTraN6IoRXfusw6l30N',
   title: 'CHISK'
 })
@@ -104,9 +108,12 @@ const moveProductPage = () => {
   .bottom-contents {
     display: flex;
     align-items: flex-end;
+    justify-content: end;
 
-    img {
-      height: 24px;
+    i {
+      margin-right: 0.5rem;
+
+      font-size: 24px;
     }
   }
 }

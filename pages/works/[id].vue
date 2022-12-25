@@ -41,7 +41,11 @@
             Used techniques
           </p>
           <div class="techniques-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg">
+            <i
+              v-for="techniqueName in productData.usedTechniques"
+              :key="techniqueName"
+              :class="`devicon-${techniqueName}-plain colored`"
+            />
           </div>
         </div>
         <div class="period">
@@ -206,8 +210,11 @@ definePageMeta({
         .techniques-logo {
           display: flex;
 
-          img {
+          i {
+            width: 32px;
             height: 32px;
+            font-size: 32px;
+            margin-right: 0.5rem;
           }
         }
       }

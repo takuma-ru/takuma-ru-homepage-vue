@@ -10,6 +10,7 @@
       :img-src="productData.imgSrc"
       :product-id="productData.productId"
       :title="productData.title"
+      :used-techniques="productData.usedTechniques"
       :style="{
         marginRight: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
         marginLeft: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
