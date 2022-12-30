@@ -84,4 +84,9 @@ p {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 400;
 }
+
+hr {
+  border: none;
+  border-bottom: solid 1px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[2]");
+}
 </style>

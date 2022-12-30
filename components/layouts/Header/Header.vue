@@ -41,8 +41,12 @@
     </div>
 
     <div class="buttons">
+      <Button
+        is-icon
+        icon="admin_panel_settings"
+        @click="navigateTo('/admin')"
+      />
       <ColorModeButton />
-      <GithubButton />
     </div>
   </div>
 </template>
@@ -77,7 +81,7 @@ const openDrawer = () => {
 <style lang="scss" scoped>
 #header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: v-bind("displayStatusStore.displaySizeMixin({sm: '1fr 1fr', lp: '1fr 1fr 1fr', pc: '1fr 1fr 1fr'})");
   align-items: center;
 
   padding: v-bind("displayStatusStore.displaySizeMixin({sm: '0px 1rem', lp: '0px 4rem', pc: '0px 4rem'})");
@@ -123,6 +127,10 @@ const openDrawer = () => {
   .buttons {
     grid-column: 3;
     justify-self: end;
+
+    #Button {
+      margin-left: 0.5rem;
+    }
   }
 }
 </style>
