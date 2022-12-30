@@ -61,14 +61,14 @@ const moveProductPage = () => {
 
   position: relative;
   z-index: 2;
-  height: 160px;
+  height: 200px;
   max-width: 720px;
 
   padding: 1rem;
 
   color: v-bind("colorStore.color.white.default");
-  border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[1] : colorStore.color.white.darken[2]");
-  border-radius: 0.75rem;
+  border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[2] : colorStore.color.white.darken[2]");
+  border-radius: 0.5rem;
   box-sizing: border-box;
   background-color: v-bind("colorStore.color.theme.complementaryDarken[2]");
   background-size: cover;
@@ -106,7 +106,7 @@ const moveProductPage = () => {
   .bottom-contents {
     display: flex;
     align-items: flex-end;
-    justify-content: end;
+    justify-content: flex-end;
 
     i {
       margin-right: 0.5rem;
