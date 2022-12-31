@@ -6,7 +6,8 @@ import {
   browserLocalPersistence,
   onAuthStateChanged,
   User,
-  GithubAuthProvider
+  GithubAuthProvider,
+  signInWithRedirect
 } from 'firebase/auth'
 import { IloggedInUser } from '~/types/composables/firebase/loggedInUserInterface'
 
@@ -51,10 +52,10 @@ export const useAuthStore = defineStore('auth', () => {
   const trySignIn = () => {
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
-        return signInWithPopup(auth, githubProvider).then((result) => {
+        return signInWithRedirect(auth, githubProvider).then((result) => {
           // const credential = TwitterAuthProvider.credentialFromResult(result)
           // const token = credential?.accessToken
-          const user = result.user
+          const user = (result as any).user
           updateLoggedInUser({
             name: user.displayName,
             email: user.email,
