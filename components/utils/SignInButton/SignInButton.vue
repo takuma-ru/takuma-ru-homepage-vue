@@ -4,7 +4,8 @@
     @click="signInOut"
   >
     <div :class="`${provider}-logo`">
-      <img src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
+      <img v-if="provider === 'github'" src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
+      <img v-if="provider === 'google'" src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google-logo">
     </div>
     <span class="text">
       <span v-if="!authStore.loggedInUser.uid">
@@ -47,7 +48,7 @@ const signInOut = () => {
   if (authStore.loggedInUser.uid) {
     authStore.trySignOut()
   } else {
-    authStore.trySignIn()
+    authStore.trySignIn(props.provider)
   }
 }
 
@@ -65,6 +66,7 @@ const signInOut = () => {
   width: fit-content;
   height: 40px;
   padding: 0px;
+  margin-bottom: 1rem;
 
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 14px;

@@ -7,13 +7,13 @@ import {
   onAuthStateChanged,
   User,
   GithubAuthProvider,
-  signInWithRedirect
+  GoogleAuthProvider
 } from 'firebase/auth'
 import { IloggedInUser } from '~/types/composables/firebase/loggedInUserInterface'
 
 export const useAuthStore = defineStore('auth', () => {
   const router = useRouter()
-  /* const googleProvider = new GoogleAuthProvider() */
+  const googleProvider = new GoogleAuthProvider()
   const githubProvider = new GithubAuthProvider()
   const auth = getAuth()
 
@@ -49,13 +49,14 @@ export const useAuthStore = defineStore('auth', () => {
   /**
    * Googleアカウントを用いたログイン処理
    */
-  const trySignIn = () => {
+  const trySignIn = (providerName: 'github' | 'google') => {
+    const provider = providerName === 'github' ? githubProvider : googleProvider
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
-        return signInWithRedirect(auth, githubProvider).then((result) => {
+        return signInWithPopup(auth, provider).then((result) => {
           // const credential = TwitterAuthProvider.credentialFromResult(result)
           // const token = credential?.accessToken
-          const user = (result as any).user
+          const user = result.user
           updateLoggedInUser({
             name: user.displayName,
             email: user.email,
