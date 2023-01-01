@@ -3,7 +3,11 @@
     id="admin"
     :class="displayStatusStore.displaySize"
   >
-    <SignInButton provider="google" />
+    <div class="user-data">
+
+    </div>
+    <SignInButton provider="google.com" />
+    <SignInButton provider="github.com" />
   </div>
 </template>
 

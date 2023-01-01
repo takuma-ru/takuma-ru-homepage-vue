@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware(async () => {
     await authStore.checkAuthState()
 
     if (authStore.loggedInUser.uid === null) {
-      return navigateTo('/admin/signIn', { replace: true })
+      return navigateTo('/admin/signIn')
       /* if でadminUserData/approvedUid の 認可済みuid一覧 に含まれているかを調べるAPIを叩き、false なら403ページに飛ばしログアウト */
     }
   }

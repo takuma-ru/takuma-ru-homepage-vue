@@ -1,14 +1,16 @@
 <template>
   <button
     id="signInButton"
+    :class="providerClassName"
+    :is-signin="authStore.loggedInUser.providerId === provider"
     @click="signInOut"
   >
-    <div :class="`${provider}-logo`">
-      <img v-if="provider === 'github'" src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
-      <img v-if="provider === 'google'" src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google-logo">
+    <div class="logo">
+      <img v-if="provider === 'github.com'" src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
+      <img v-if="provider === 'google.com'" src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google-logo">
     </div>
     <span class="text">
-      <span v-if="!authStore.loggedInUser.uid">
+      <span v-if="authStore.loggedInUser.providerId !== provider">
         Sign in with <span class="provider-name">{{ providerName }}</span>
       </span>
       <span v-else>
@@ -21,7 +23,7 @@
 <script lang="ts" setup>
 /* -- type, interface -- */
 export interface ISignInButtonProps {
-  provider: 'google' | 'github';
+  provider: 'google.com' | 'github.com';
 }
 
 /* -- store -- */
@@ -30,22 +32,31 @@ const colorStore = useColorStore()
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<ISignInButtonProps>(), {
-  provider: 'github'
+  provider: 'github.com'
 })
 
 /* -- variable(ref, reactive, computed) -- */
 const providerName = computed(() => {
   switch (props.provider) {
-    case 'github':
+    case 'github.com':
       return 'GitHub'
-    case 'google':
+    case 'google.com':
       return 'Google'
+  }
+})
+
+const providerClassName = computed(() => {
+  switch (props.provider) {
+    case 'github.com':
+      return 'github'
+    case 'google.com':
+      return 'google'
   }
 })
 
 /* -- function -- */
 const signInOut = () => {
-  if (authStore.loggedInUser.uid) {
+  if (authStore.loggedInUser.providerId === props.provider) {
     authStore.trySignOut()
   } else {
     authStore.trySignIn(props.provider)
@@ -72,10 +83,9 @@ const signInOut = () => {
   font-size: 14px;
 
   color: #FFFFFF;
-  background-color: v-bind("provider === 'google' ? '#4285F4' : '#0B0B0B'");
   box-sizing: border-box;
   border-radius: 6px;
-  border: solid 1px v-bind("provider === 'google' ? '#4285F4' : '#0B0B0B'");
+  border: solid 1px;
   cursor: pointer;
 
   .text {
@@ -86,7 +96,7 @@ const signInOut = () => {
     }
   }
 
-  .google-logo, .github-logo {
+  .logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -100,15 +110,25 @@ const signInOut = () => {
     background-color: v-bind("colorStore.color.white.default");
   }
 
-  .google-logo {
-    img {
-      width: 18px;
+  &.google {
+    background-color: #4285F4;
+    border-color: #4285F4;
+
+    .logo {
+      img {
+        width: 18px;
+      }
     }
   }
 
-  .github-logo {
-    img {
-      width: 22px;
+  &.github {
+    background-color: #0B0B0B;
+    border-color: #0B0B0B;
+
+    .logo {
+      img {
+        width: 22px;
+      }
     }
   }
 }

@@ -22,9 +22,9 @@ export default defineNuxtConfig({
         { hid: 'twitter:site', name: 'twitter:site', content: '@takumaru_2222' }
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/icon_rounded.png' },
-        { rel: 'apple-touch-icon', href: '/apple_touch_icon.png', sizes: '180x180' },
-        { rel: 'mask-icon', color: '#FCFCF9', href: '/mask_icon.svg' },
+        { rel: 'icon', type: 'image/png', href: '/icons/icon-default.png' },
+        { rel: 'mask-icon', color: '#FCFCF9', href: '/icons/icon-default.svg' },
+        /* { rel: 'apple-touch-icon', href: '/apple_touch_icon.png', sizes: '180x180' }, */
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com'

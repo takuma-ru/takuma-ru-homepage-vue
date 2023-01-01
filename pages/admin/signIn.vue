@@ -22,8 +22,8 @@
       <p>You must be logged in with an authorized account to access this page</p>
       <hr>
       <div class="buttons">
-        <SignInButton provider="google" />
-        <SignInButton provider="github" />
+        <SignInButton provider="github.com" />
+        <SignInButton provider="google.com" />
       </div>
     </div>
   </div>

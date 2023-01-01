@@ -44,6 +44,10 @@ productDataStore.getProductData()
 </script>
 
 <style lang="scss">
+:root {
+  --svh: 1vh
+}
+
 html, body {
   margin: 0px;
 

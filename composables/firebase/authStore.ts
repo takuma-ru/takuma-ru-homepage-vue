@@ -25,7 +25,8 @@ export const useAuthStore = defineStore('auth', () => {
     name: null,
     email: null,
     uid: null,
-    photoURL: null
+    photoURL: null,
+    providerId: null
   })
 
   /**
@@ -34,11 +35,12 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoggedIn = ref<boolean>(false)
 
   /* -- mutation -- */
-  const updateLoggedInUser = ({ name, email, uid, photoURL }: IloggedInUser) => {
-    loggedInUser.email = email
-    loggedInUser.name = name
-    loggedInUser.photoURL = photoURL
-    loggedInUser.uid = uid
+  const updateLoggedInUser = (userData: IloggedInUser) => {
+    loggedInUser.email = userData.email
+    loggedInUser.name = userData.name
+    loggedInUser.photoURL = userData.photoURL
+    loggedInUser.uid = userData.uid
+    loggedInUser.providerId = userData.providerId
   }
 
   const updateIsLoggedIn = (state: boolean) => {
@@ -49,8 +51,8 @@ export const useAuthStore = defineStore('auth', () => {
   /**
    * Googleアカウントを用いたログイン処理
    */
-  const trySignIn = (providerName: 'github' | 'google') => {
-    const provider = providerName === 'github' ? githubProvider : googleProvider
+  const trySignIn = (providerName: 'github.com' | 'google.com') => {
+    const provider = providerName === 'github.com' ? githubProvider : googleProvider
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
         return signInWithPopup(auth, provider).then((result) => {
@@ -61,7 +63,8 @@ export const useAuthStore = defineStore('auth', () => {
             name: user.displayName,
             email: user.email,
             uid: user.uid,
-            photoURL: user.photoURL
+            photoURL: user.photoURL,
+            providerId: result.providerId
           })
           updateIsLoggedIn(true)
         }).catch((error) => {
@@ -91,12 +94,13 @@ export const useAuthStore = defineStore('auth', () => {
         name: null,
         email: null,
         uid: null,
-        photoURL: null
+        photoURL: null,
+        providerId: null
       })
       updateIsLoggedIn(false)
       router.go(0)
     }).catch((error) => {
-      console.log(error)
+      console.error(error)
     })
   }
 
@@ -118,7 +122,8 @@ export const useAuthStore = defineStore('auth', () => {
         name: user!.displayName,
         email: user!.email,
         uid: user!.uid,
-        photoURL: user!.photoURL
+        photoURL: user!.photoURL,
+        providerId: user!.providerData[0].providerId
       })
       updateIsLoggedIn(true)
 
@@ -128,7 +133,8 @@ export const useAuthStore = defineStore('auth', () => {
         name: null,
         email: null,
         uid: null,
-        photoURL: null
+        photoURL: null,
+        providerId: null
       })
       updateIsLoggedIn(false)
     }
@@ -142,7 +148,8 @@ export const useAuthStore = defineStore('auth', () => {
         name: user.displayName,
         email: user.email,
         uid: user.uid,
-        photoURL: user.photoURL
+        photoURL: user.photoURL,
+        providerId: user.providerData[0].providerId
       })
       updateIsLoggedIn(true)
     } else {
@@ -150,7 +157,8 @@ export const useAuthStore = defineStore('auth', () => {
         name: null,
         email: null,
         uid: null,
-        photoURL: null
+        photoURL: null,
+        providerId: null
       })
       updateIsLoggedIn(false)
     }

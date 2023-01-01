@@ -2,11 +2,13 @@
  * viewport の `svh` と同じ画面サイズを求める変数
  */
 export const useSvh = () => {
-  const svh = ref('0px')
+  const documentElement = ref<HTMLElement>()
+  documentElement.value = document.documentElement
 
-  const setSvh = () => {
-    svh.value = window.innerHeight * 0.01 + 'px'
-    document.documentElement.style.setProperty('--svh', svh.value)
+  const svh = useCssVar('--svh', documentElement)
+
+  const setSvh = async () => {
+    svh.value = await window.innerHeight * 0.01 + 'px'
   }
 
   useEventListener(window, 'resize', setSvh)
