@@ -1,7 +1,28 @@
 <template>
   <div id="app">
-    <NuxtLayout :name="layout">
-      <NuxtPage />
+    <NuxtLayout name="top">
+      <div class="error">
+        <div class="title">
+          <h1>
+            <span>
+              Error Code
+            </span>
+            <HighLight :border-color="colorStore.color.red.default">
+              {{ error?.statusCode }}
+            </HighLight>
+          </h1>
+          <p>{{ error.message }}</p>
+          <Button
+            fit-content
+            color="transparent"
+            icon="chevron_left"
+            style="margin-top: 1rem"
+            @click="navigateTo('/')"
+          >
+            Back to top
+          </Button>
+        </div>
+      </div>
     </NuxtLayout>
   </div>
 </template>
@@ -12,37 +33,37 @@ import 'devicon'
 
 registerSW()
 /* -- type, interface -- */
+interface IError {
+  url: string;
+  statusCode: string;
+  statusMessage: string;
+  message: string;
+  description: string;
+  data?: any;
+}
 
 /* -- store -- */
 const colorStore = useColorStore()
-const displayStatusStore = useDisplayStatusStore()
 const colorModeStore = useColorModeStore()
 const productDataStore = useProductDataStore()
 
 /* -- props, emit -- */
+defineProps<{
+  error: IError
+}>()
 
 /* -- variable(ref, reactive, computed) -- */
-const layout = computed(() => {
-  if (useRoute().fullPath === '/') {
-    return 'top'
-  } else if (displayStatusStore.displaySize === 'sm') {
-    return 'smartphone'
-  } else {
-    return 'default'
-  }
-})
-
-useSvh()
 
 /* -- function -- */
 
 /* -- watch -- */
 
 /* -- life cycle -- */
+useSvh()
 productDataStore.getProductData()
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 :root {
   --svh: 1vh
 }
@@ -79,17 +100,16 @@ html, body {
   height: 100vh;
   height: calc(var(--svh, 1vh) * 100);
   max-height: calc(var(--svh, 1vh) * 100);
+
   background-color: v-bind("colorStore.color.theme.background");
   color: v-bind("colorStore.color.theme.text");
+
 }
 
-p {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 400;
-}
+.error {
+  display: grid;
+  align-items: center;
 
-hr {
-  border: none;
-  border-bottom: solid 1px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[2]");
+  height: 100%;
 }
 </style>
