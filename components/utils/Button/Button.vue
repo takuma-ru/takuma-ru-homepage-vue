@@ -16,7 +16,7 @@
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
-        :style="!isIcon && 'margin-right: 0.8rem'"
+        :style="!isIcon && 'margin-right: 0.75rem'"
       />
       <slot />
     </div>
@@ -80,7 +80,7 @@ const click = () => {
   height: 100%;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: v-bind("props.color");
   cursor: pointer;
   outline: none;

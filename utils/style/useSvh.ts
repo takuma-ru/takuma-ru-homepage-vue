@@ -7,8 +7,8 @@ export const useSvh = () => {
 
   const svh = useCssVar('--svh', documentElement)
 
-  const setSvh = async () => {
-    svh.value = await window.innerHeight * 0.01 + 'px'
+  const setSvh = () => {
+    svh.value = window.innerHeight * 0.01 + 'px'
   }
 
   useEventListener(window, 'resize', setSvh)

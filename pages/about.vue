@@ -56,9 +56,6 @@
           I am majoring in Information Processing and Software Development.<br>
         </p>
         <div class="second-contents">
-          <p class="contents-title">
-            track record
-          </p>
           <AchievementCard
             :product-id="productDataStore.searchProductData('ZBTraN6IoRXfusw6l30N').productId"
           />
@@ -228,7 +225,7 @@ definePageMeta({
       }
 
       .first-contents {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
 
       .second-contents {

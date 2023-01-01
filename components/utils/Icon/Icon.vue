@@ -1,5 +1,6 @@
 <template>
   <span
+    id="Icon"
     class="material-symbols-rounded"
   >
     {{ icon }}

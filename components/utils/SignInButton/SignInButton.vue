@@ -21,9 +21,11 @@
 </template>
 
 <script lang="ts" setup>
+import { IloggedInUser } from '~/types/composables/firebase/loggedInUserInterface'
+
 /* -- type, interface -- */
 export interface ISignInButtonProps {
-  provider: 'google.com' | 'github.com';
+  provider: IloggedInUser['providerId'];
 }
 
 /* -- store -- */
@@ -77,7 +79,6 @@ const signInOut = () => {
   width: fit-content;
   height: 40px;
   padding: 0px;
-  margin-bottom: 1rem;
 
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 14px;

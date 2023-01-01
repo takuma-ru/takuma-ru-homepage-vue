@@ -51,7 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
   /**
    * Googleアカウントを用いたログイン処理
    */
-  const trySignIn = (providerName: 'github.com' | 'google.com') => {
+  const trySignIn = (providerName: IloggedInUser['providerId']) => {
     const provider = providerName === 'github.com' ? githubProvider : googleProvider
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
