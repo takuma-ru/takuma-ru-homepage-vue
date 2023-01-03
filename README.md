@@ -1,17 +1,10 @@
-# <div style="text-align: center;">takuma-ru-nuxt-template</div>
+# <div style="text-align: center;">takumaru.dev-vue</div>
 <!-- <p align="center">
   <img src="/static/icon.png"  width="256" height="256" alt="nuxt-firebase logo">
 </p> -->
 
 ## Description
-Template repository for developing web applications etc. with nuxt3.
-
-## Features
-- [x] Initial setup of `vueuse` and `pinia`
-- [x] Automatic creation of component files, etc. with `hygen`
-- [x] Storybook project that can take full advantage of vite&nuxt3 features
-- [x] Some generic components
-- [ ] Introduction of PWA
+takuma-ru's home page
 
 ## Dependencies / DevDependencies
 | package name | version |
@@ -28,11 +21,6 @@ Template repository for developing web applications etc. with nuxt3.
 | vite-plugin-pwa | ^0.13.3 |
 
 ## Getting Started
-
-#### 0. Click to "Use this template"
-[![use-this-temp-button](https://user-images.githubusercontent.com/49429291/202691047-cdf8ce37-1be6-47fa-898c-f143b2773aca.png)](https://github.com/takuma-ru/takuma-ru-nuxt-template/generate)
-
-
 #### 1. Install
 ```powershell
 yarn
@@ -77,7 +65,7 @@ yarn preview
 
 ## Deploy Service
 <!-- [Firebase Hosting](https://firebase.google.com/products/hosting?gclid=Cj0KCQiA1sucBhDgARIsAFoytUuCQdfrUzumhsqOWLO6TncdTd959kbvy2HGpWO6AXQVvFlRpbuy0l4aAg9uEALw_wcB&gclsrc=aw.ds) -->
-<!-- [Vercel](https://vercel.com/) -->
+[Vercel](https://vercel.com/)
 
 
 ## ScreenShot

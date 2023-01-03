@@ -4,8 +4,6 @@ export default defineNuxtRouteMiddleware(async () => {
 
     await authStore.checkAuthState()
 
-    console.log(authStore.idToken)
-
     if (authStore.loggedInUser.uid && authStore.idToken) {
       const verifyIsAdminRes = await $fetch('https://asia-northeast1-takuma-ru-homepage.cloudfunctions.net/api/verify-is-admin', {
         method: 'POST',
