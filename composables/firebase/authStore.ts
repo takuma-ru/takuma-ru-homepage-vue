@@ -34,7 +34,16 @@ export const useAuthStore = defineStore('auth', () => {
    */
   const isLoggedIn = ref<boolean>(false)
 
+  /**
+   * APIのパラメータに含めるためのアクセストークン
+   */
+  const idToken = ref<string | null>(null)
+
   /* -- mutation -- */
+  /**
+   * loggedInUser の更新を行う
+   * @param userData 更新したい値
+   */
   const updateLoggedInUser = (userData: IloggedInUser) => {
     loggedInUser.email = userData.email
     loggedInUser.name = userData.name
@@ -43,8 +52,20 @@ export const useAuthStore = defineStore('auth', () => {
     loggedInUser.providerId = userData.providerId
   }
 
+  /**
+   * isLoggedIn のフラグを更新する
+   * @param state 変更したいフラグ値
+   */
   const updateIsLoggedIn = (state: boolean) => {
     isLoggedIn.value = state
+  }
+
+  /**
+   * token の更新を行う
+   * @param state 更新したい値
+   */
+  const updateIdToken = (state: string | null) => {
+    idToken.value = state
   }
 
   /* -- action -- */
@@ -55,9 +76,15 @@ export const useAuthStore = defineStore('auth', () => {
     const provider = providerName === 'github.com' ? githubProvider : googleProvider
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
-        return signInWithPopup(auth, provider).then((result) => {
-          // const credential = TwitterAuthProvider.credentialFromResult(result)
-          // const token = credential?.accessToken
+        return signInWithPopup(auth, provider).then((result) => { // ログイン成功時
+          // アクセストークンの取得と更新
+          const credential = providerName === 'github.com' ? GithubAuthProvider.credentialFromResult(result) : GoogleAuthProvider.credentialFromResult(result)
+          const token = credential?.idToken
+          if (token) {
+            updateIdToken(token)
+          }
+
+          // ユーザーデータの取得と更新
           const user = result.user
           updateLoggedInUser({
             name: user.displayName,
@@ -66,8 +93,10 @@ export const useAuthStore = defineStore('auth', () => {
             photoURL: user.photoURL,
             providerId: result.providerId
           })
+
+          // ログイン成功フラグを立てる
           updateIsLoggedIn(true)
-        }).catch((error) => {
+        }).catch((error) => { // ログイン失敗時
           const errorCode = error.code
           const errorMessage = error.message
           const email = error.email
@@ -90,6 +119,7 @@ export const useAuthStore = defineStore('auth', () => {
    */
   const trySignOut = () => {
     signOut(auth).then(() => {
+      updateIdToken(null)
       updateLoggedInUser({
         name: null,
         email: null,
@@ -118,17 +148,25 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       const user = await checkState()
-      updateLoggedInUser({
-        name: user!.displayName,
-        email: user!.email,
-        uid: user!.uid,
-        photoURL: user!.photoURL,
-        providerId: user!.providerData[0].providerId
-      })
-      updateIsLoggedIn(true)
+
+      if (user) {
+        updateIdToken(await user.getIdToken())
+
+        updateLoggedInUser({
+          name: user!.displayName,
+          email: user!.email,
+          uid: user!.uid,
+          photoURL: user!.photoURL,
+          providerId: user!.providerData[0].providerId
+        })
+
+        updateIsLoggedIn(true)
+      }
 
       return user
     } catch (error) {
+      console.error(error)
+      updateIdToken(null)
       updateLoggedInUser({
         name: null,
         email: null,
@@ -142,8 +180,13 @@ export const useAuthStore = defineStore('auth', () => {
 
   /* -- other -- */
   // ログイン状態を常時監視
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
+      const token = await user.getIdToken()
+      if (token) {
+        updateIdToken(token)
+      }
+
       updateLoggedInUser({
         name: user.displayName,
         email: user.email,
@@ -151,8 +194,11 @@ export const useAuthStore = defineStore('auth', () => {
         photoURL: user.photoURL,
         providerId: user.providerData[0].providerId
       })
+
       updateIsLoggedIn(true)
     } else {
+      updateIdToken(null)
+
       updateLoggedInUser({
         name: null,
         email: null,
@@ -160,6 +206,7 @@ export const useAuthStore = defineStore('auth', () => {
         photoURL: null,
         providerId: null
       })
+
       updateIsLoggedIn(false)
     }
   })
@@ -167,6 +214,7 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     loggedInUser: readonly(loggedInUser),
     isLoggedIn: readonly(isLoggedIn),
+    idToken: readonly(idToken),
     trySignIn,
     trySignOut,
     checkAuthState

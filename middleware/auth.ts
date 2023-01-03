@@ -4,9 +4,27 @@ export default defineNuxtRouteMiddleware(async () => {
 
     await authStore.checkAuthState()
 
-    if (authStore.loggedInUser.uid === null) {
+    console.log(authStore.idToken)
+
+    if (authStore.loggedInUser.uid && authStore.idToken) {
+      const verifyIsAdminRes = await $fetch('https://asia-northeast1-takuma-ru-homepage.cloudfunctions.net/api/verify-is-admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          idToken: authStore.idToken
+        }
+      })
+
+      if (verifyIsAdminRes === 'false') {
+        authStore.trySignOut()
+        return abortNavigation(
+          createError({ statusCode: 403, message: 'Server could not verify authorization to view this page' })
+        )
+      }
+    } else {
       return navigateTo('/admin/signIn')
-      /* if でadminUserData/approvedUid の 認可済みuid一覧 に含まれているかを調べるAPIを叩き、false なら403ページに飛ばしログアウト */
     }
   }
 })
