@@ -22,6 +22,8 @@ const productDataStore = useProductDataStore()
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
+const nuxtApp = useNuxtApp()
+const loading = ref(false)
 const layout = computed(() => {
   if (useRoute().fullPath === '/') {
     return 'top'
@@ -39,6 +41,12 @@ useSvh()
 /* -- watch -- */
 
 /* -- life cycle -- */
+nuxtApp.hook('page:start', () => {
+  loading.value = true
+})
+nuxtApp.hook('page:finish', () => {
+  loading.value = false
+})
 productDataStore.getProductData()
 </script>
 
@@ -91,5 +99,17 @@ p {
 hr {
   border: none;
   border-bottom: solid 1px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[2]");
+}
+
+.loading {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  height: calc(var(--svh, 1vh) * 100);
+  max-height: calc(var(--svh, 1vh) * 100);
+  top: 0%;
+  left: 0%;
+
+  background-color: v-bind("colorStore.color.theme.background");
 }
 </style>

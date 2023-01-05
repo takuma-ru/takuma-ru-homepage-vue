@@ -12,7 +12,7 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
+        :color="outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
