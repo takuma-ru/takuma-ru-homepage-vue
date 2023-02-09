@@ -2,7 +2,7 @@ import { ColorsInterface } from '~/types/composables/style/colorStoreType'
 
 export const useColorStore = defineStore('color', () => {
   /* -- state -- */
-  const color = ref<ColorsInterface>({
+  const color = reactive<ColorsInterface>({
     white: {
       default: '#FFFFFF',
       lighten: {
@@ -12,19 +12,21 @@ export const useColorStore = defineStore('color', () => {
       darken: {
         1: '#f6f8fa',
         2: '#E2E7EC',
-        3: '#CBCCDD'
+        3: '#DDDDDD'
       }
     },
     black: {
       default: '#030300',
       lighten: {
-        1: '#676764',
-        2: '#CBCAC7'
+        1: '#727272',
+        2: '#9C9C9C',
+        3: '#DDDDDD'
       },
       darken: {
         1: '#4D4D4D',
         2: '#2C2C2C',
-        3: '#1A1A1A'
+        3: '#1A1A1A',
+        4: '#080808'
       }
     },
     red: {
@@ -96,51 +98,51 @@ export const useColorStore = defineStore('color', () => {
 
   /* -- mutation -- */
   const setLightTheme = () => {
-    color.value.theme = {
-      text: color.value.black.default,
-      subText: color.value.black.lighten[1],
-      background: color.value.white.darken[1],
+    color.theme = {
+      text: color.black.default,
+      subText: color.black.lighten[1],
+      background: color.white.darken[1],
       lighten: {
-        1: color.value.black.lighten[1],
-        2: color.value.black.lighten[2]
+        1: color.black.lighten[1],
+        2: color.black.lighten[2]
       },
       darken: {
-        1: color.value.black.darken[1],
-        2: color.value.black.darken[2],
-        3: color.value.black.darken[3]
+        1: color.black.darken[1],
+        2: color.black.darken[2],
+        3: color.black.darken[3]
       },
       complementaryLighten: {
-        1: color.value.white.lighten[1],
-        2: color.value.white.lighten[2]
+        1: color.white.lighten[1],
+        2: color.white.lighten[2]
       },
       complementaryDarken: {
-        1: color.value.white.darken[1],
-        2: color.value.white.darken[2]
+        1: color.white.darken[1],
+        2: color.white.darken[2]
       }
     }
   }
 
   const setDarkTheme = () => {
-    color.value.theme = {
-      text: color.value.white.darken[2],
-      subText: color.value.black.lighten[2],
-      background: color.value.black.darken[3],
+    color.theme = {
+      text: color.white.darken[3],
+      subText: color.black.lighten[1],
+      background: color.black.darken[4],
       lighten: {
-        1: color.value.white.lighten[1],
-        2: color.value.white.lighten[2]
+        1: color.white.lighten[1],
+        2: color.white.lighten[2]
       },
       darken: {
-        1: color.value.white.darken[1],
-        2: color.value.white.darken[2]
+        1: color.white.darken[1],
+        2: color.white.darken[2]
       },
       complementaryLighten: {
-        1: color.value.black.lighten[1],
-        2: color.value.black.lighten[2]
+        1: color.black.lighten[1],
+        2: color.black.lighten[2]
       },
       complementaryDarken: {
-        1: color.value.black.darken[1],
-        2: color.value.black.darken[2],
-        3: color.value.black.darken[3]
+        1: color.black.darken[1],
+        2: color.black.darken[2],
+        3: color.black.darken[3]
       }
     }
   }
