@@ -5,8 +5,8 @@
   >
     <AchievementCard
       v-for="productData in productDataStore.productDataList"
-      :key="productData.productId"
-      :product-id="productData.productId"
+      :key="productData.id"
+      :product-id="productData.id"
       :style="{
         marginRight: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
         marginLeft: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,

@@ -7,21 +7,21 @@
       <h1>
         Hi admin,
         <HighLight :border-color="colorStore.color.green.default">
-          {{ authStore.loggedInUser.name }}
+          {{ userDataStore.user?.fullName }}
         </HighLight>
       </h1>
       <div class="signout">
-        <SignInButton :provider="authStore.loggedInUser.providerId" />
+        <SignInButton provider="github" />
       </div>
       <div class="sub-data">
         <p>
           <Icon icon="mail" size="1rem" />
-          {{ authStore.loggedInUser.email }}
+          {{ userDataStore.supabaseUser?.email }}
         </p>
-        <p>
+        <!-- <p>
           <Icon icon="domain" size="1rem" />
-          {{ authStore.loggedInUser.providerId }}
-        </p>
+          {{ userDataStore.supabaseUser? }}
+        </p> -->
         <p>
           <Icon icon="badge" size="1rem" />
           Chief administrator
@@ -35,31 +35,6 @@
         <div class="card">
           <p>
             <Icon
-              :icon="findPathData('/about').icon"
-              style="margin-right: 0.5rem"
-            />
-            {{ findPathData('/about').title }}
-          </p>
-          <div class="contents">
-            <Button
-              icon="add"
-              :color="colorStore.color.blue.default"
-              fit-content
-            >
-              Add Work
-            </Button>
-            <Button
-              icon="edit"
-              :color="colorStore.color.green.default"
-              fit-content
-            >
-              Edit Work Info
-            </Button>
-          </div>
-        </div>
-        <div class="card">
-          <p>
-            <Icon
               :icon="findPathData('/works').icon"
               style="margin-right: 0.5rem"
             />
@@ -70,31 +45,13 @@
               icon="add"
               :color="colorStore.color.blue.default"
               fit-content
+              @click="navigateTo('/admin/works/add')"
             >
               Add Work
             </Button>
             <Button
               icon="edit"
-              :color="colorStore.color.green.default"
-              fit-content
-            >
-              Edit Work Info
-            </Button>
-          </div>
-        </div>
-        <div class="card">
-          <p>Works</p>
-          <div class="contents">
-            <Button
-              icon="add"
-              :color="colorStore.color.blue.default"
-              fit-content
-            >
-              Add Work
-            </Button>
-            <Button
-              icon="edit"
-              :color="colorStore.color.green.default"
+              :color="colorStore.color.blue.darken[1]"
               fit-content
             >
               Edit Work Info
@@ -105,8 +62,7 @@
     </div>
     <div class="signin-methods">
       <h3>SignIn method</h3>
-      <SignInButton provider="github.com" style="margin-bottom: 0.5rem;" />
-      <SignInButton provider="google.com" />
+      <SignInButton provider="github" />
     </div>
   </div>
 </template>
@@ -125,6 +81,7 @@ interface IActionList {
 
 /* -- store -- */
 const authStore = useAuthStore()
+const userDataStore = useUserDataStore()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
 const colorModeStore = useColorModeStore()
@@ -217,20 +174,18 @@ definePageMeta({
       display: grid;
       grid-template-rows: min-content min-content;
       grid-template-columns: 1fr;
+      column-gap: 0.5rem;
 
       padding: 1rem;
 
       background-color: v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.darken[2] : colorStore.color.white.default");
       border-radius: 0.5rem;
 
-      #Button {
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
       .contents {
         display: flex;
         flex-wrap: wrap;
+        column-gap: 0.5rem;
+        row-gap: 0.5rem;
       }
 
       p {

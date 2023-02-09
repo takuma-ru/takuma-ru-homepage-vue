@@ -2,15 +2,15 @@
   <button
     id="signInButton"
     :class="providerClassName"
-    :is-signin="authStore.loggedInUser.providerId === provider"
+    :is-signin="userDataStore.user?.username !== null"
     @click="signInOut"
   >
     <div class="logo">
-      <img v-if="provider === 'github.com'" src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
-      <img v-if="provider === 'google.com'" src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google-logo">
+      <img v-if="provider === 'github'" src="https://cdn.cdnlogo.com/logos/g/69/github-icon.svg" alt="github-logo">
+      <img v-if="provider === 'google'" src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google-logo">
     </div>
     <span class="text">
-      <span v-if="authStore.loggedInUser.providerId !== provider">
+      <span v-if="!userDataStore.supabaseUser">
         Sign in with <span class="provider-name">{{ providerName }}</span>
       </span>
       <span v-else>
@@ -21,47 +21,48 @@
 </template>
 
 <script lang="ts" setup>
-import { IloggedInUser } from '~/types/composables/firebase/loggedInUserInterface'
+import { Provider } from '~/types/composables/supabase/SignInProvider'
 
 /* -- type, interface -- */
 export interface ISignInButtonProps {
-  provider: IloggedInUser['providerId'];
+  provider: Provider;
 }
 
 /* -- store -- */
 const authStore = useAuthStore()
+const userDataStore = useUserDataStore()
 const colorStore = useColorStore()
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<ISignInButtonProps>(), {
-  provider: 'github.com'
+  provider: 'github'
 })
 
 /* -- variable(ref, reactive, computed) -- */
 const providerName = computed(() => {
   switch (props.provider) {
-    case 'github.com':
+    case 'github':
       return 'GitHub'
-    case 'google.com':
+    case 'google':
       return 'Google'
   }
 })
 
 const providerClassName = computed(() => {
   switch (props.provider) {
-    case 'github.com':
+    case 'github':
       return 'github'
-    case 'google.com':
+    case 'google':
       return 'google'
   }
 })
 
 /* -- function -- */
 const signInOut = () => {
-  if (authStore.loggedInUser.providerId === props.provider) {
-    authStore.trySignOut()
+  if (userDataStore.user?.fullName) {
+    authStore.signOut()
   } else {
-    authStore.trySignIn(props.provider)
+    authStore.signInWithProvider(props.provider)
   }
 }
 

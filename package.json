@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/supabase": "^0.3.0",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -48,7 +49,6 @@
     "@pinia/nuxt": "^0.4.5",
     "@takuma-ru/vue-swipe-modal": "^4.0.7",
     "devicon": "^2.15.1",
-    "firebase": "^9.15.0",
     "pinia": "^2.0.25",
     "vite-plugin-eslint": "^1.8.1"
   }

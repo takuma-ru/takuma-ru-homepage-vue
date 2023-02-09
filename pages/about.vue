@@ -57,7 +57,7 @@
         </p>
         <div class="second-contents">
           <AchievementCard
-            :product-id="productDataStore.searchProductData('ZBTraN6IoRXfusw6l30N').productId"
+            :product-id="productDataStore.searchProductData('3c1b18f2-a88d-4bce-a587-43d4b10c4b9d').id"
           />
         </div>
       </div>

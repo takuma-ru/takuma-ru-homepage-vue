@@ -26,7 +26,7 @@
     </div>
 
     <div
-      v-if="displayStatusStore.displaySize !== 'sm'"
+      v-if="displayStatusStore.displaySize !== 'sm' && route.path.indexOf('/admin') !== 0"
       class="link-list"
     >
       <Button

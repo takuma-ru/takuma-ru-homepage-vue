@@ -8,7 +8,7 @@
               Error Code
             </span>
             <HighLight :border-color="colorStore.color.red.default">
-              {{ error?.statusCode }}
+              {{ error?.statusCode ? error?.statusCode : 'Unknown' }}
             </HighLight>
           </h1>
           <p>{{ error.message }}</p>

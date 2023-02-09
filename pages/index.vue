@@ -64,7 +64,7 @@ definePageMeta({
 #index {
   display: grid;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
 
   height: 100%;
 
@@ -76,6 +76,7 @@ definePageMeta({
     .media {
       display: flex;
       flex-flow: column;
+      align-items: center;
 
       #Button {
         width: fit-content;

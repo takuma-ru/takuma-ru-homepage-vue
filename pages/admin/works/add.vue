@@ -1,6 +1,11 @@
 <template>
   <div id="works-add">
-
+    <h1>
+      Add my work to works
+    </h1>
+    <div class="contents">
+      
+    </div>
   </div>
 </template>
 
