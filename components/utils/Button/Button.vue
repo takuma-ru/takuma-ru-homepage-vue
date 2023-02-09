@@ -1,8 +1,8 @@
 <template>
   <button
-    id="Button"
+    class="button"
     :disabled="disabled"
-    :size="!isIcon && size"
+    :size="size"
     :fab="fab"
     :icon="isIcon"
     :outlined="outlined"
@@ -12,13 +12,15 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
+        :color="iconProps?.color ? iconProps.color : outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
         :style="!isIcon && 'margin-right: 0.75rem'"
       />
-      <slot />
+      <p>
+        <slot />
+      </p>
     </div>
   </button>
 </template>
@@ -74,7 +76,7 @@ const click = () => {
 </script>
 
 <style lang="scss" scoped>
-#Button {
+.button {
   position: relative;
   width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
   height: 100%;
@@ -102,6 +104,15 @@ const click = () => {
     font-weight: 600;
     color: v-bind("props.color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(props.color)");
     white-space: nowrap;
+
+    p {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+
+      vertical-align: text-top;
+      margin: 0px;
+    }
 
     span {
       line-height: 24px;
@@ -169,24 +180,6 @@ const click = () => {
     }
   }
 
-  &[icon = true] {
-    width: 40px;
-    height: 40px;
-
-    background-color: transparent;
-
-    &:hover::before {
-      border-radius: 25%;
-    }
-
-    .text {
-      height: calc(100% - 16px);
-
-      padding: 0px;
-      margin: 0px;
-    }
-  }
-
   &[outlined = true] {
     background-color: transparent;
 
@@ -223,6 +216,31 @@ const click = () => {
 
     &:hover::before {
       border-radius: 16px;
+    }
+  }
+
+  &[icon = true] {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+
+    background-color: transparent;
+    border-radius: 0.4em;
+
+    &:hover::before {
+      border-radius: 25%;
+    }
+
+    .text {
+      height: calc(100%);
+
+      padding: 0px;
+      margin: 0px;
+    }
+
+    &[size = "small"] {
+      width: 32px;
+      height: 32px;
     }
   }
 }

@@ -76,7 +76,7 @@ definePageMeta({
     .media {
       display: flex;
       flex-flow: column;
-      align-items: center;
+      align-items: flex-start;
 
       #Button {
         width: fit-content;

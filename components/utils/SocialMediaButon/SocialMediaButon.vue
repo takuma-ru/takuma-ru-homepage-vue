@@ -1,18 +1,13 @@
 <template>
   <Button
     color="transparent"
+    fit-content
     class="socialMediaButon"
-    :style="{
-      width: 'fit-content'
-    }"
   >
     <Twitter v-if="mediaName === 'twitter'" />
     <Instagram v-if="mediaName === 'instagram'" />
     <GitHub v-if="mediaName === 'github'" />
-    <hr>
-    <p>
-      @{{ uid }}
-    </p>
+    @{{ uid }}
   </Button>
 </template>
 
@@ -51,10 +46,6 @@ withDefaults(defineProps<ISocialMediaButonProps>(), {
     border: none;
     border-left: solid 1px v-bind("colorStore.color.theme.subText");
     height: 100%;
-  }
-
-  p {
-    line-height: 24px;
   }
 }
 </style>
