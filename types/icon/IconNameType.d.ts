@@ -1,7 +1,8 @@
 /**
  * material-symbols に登録されているアイコン一覧
  */
- export type IconNameType = '123' |
+ export type IconNameType = string |
+ '123' |
  '360' |
  '10k' |
  '10mp' |

@@ -1,74 +1,67 @@
-<!-- eslint-disable vue/valid-v-model -->
 <template>
-  <div class="textField">
-    <div class="input">
-      <Icon
-        v-if="icon"
-        :icon="icon"
-      />
-      <textarea
-        v-model="(value as any)"
-        :name="labelText"
-        :placeholder="placeholder"
-      />
-      <label>{{ labelText }}</label>
-    </div>
-    <small v-if="errorMessage">
-      <Icon
-        icon="error"
-        size="16px"
-        :color="colorStore.color.red.default"
-        fill
-      />
-      <span class="error-text">
-        {{ errorMessage }}
-      </span>
-    </small>
+  <div id="datePicker">
+    <VuepicDatepicker
+      v-model="vModel"
+      month-picker
+      :dark="colorModeStore.colorMode === 'dark'"
+    >
+      <template #dp-input="{ value }">
+        <div class="input">
+          <Icon
+            v-if="icon"
+            :icon="icon"
+          />
+          <input type="text" :value="value">
+          <label>{{ labelText }}</label>
+        </div>
+      </template>
+    </VuepicDatepicker>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useField } from 'vee-validate'
+import VuepicDatepicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
 import { IconNameType } from '~/types/icon/IconNameType'
 
 /* -- type, interface -- */
-export interface ITextFieldProps {
+export interface IDatePickerProps {
   icon?: IconNameType
   labelText: string
-  modelValue: string
+  modelValue: Date
   placeholder: string
 }
 
-export interface ITextFieldEmits {
+export interface IDatePickerEmits {
   (e: 'update:modelValue'): void
 }
 
 /* -- store -- */
 const colorStore = useColorStore()
+const colorModeStore = useColorModeStore()
 
 /* -- props, emit -- */
-const props = withDefaults(defineProps<ITextFieldProps>(), {
-  modelValue: '',
+const props = withDefaults(defineProps<IDatePickerProps>(), {
   type: 'text',
   labelText: 'label',
   placeholder: 'プライスホルダー'
 })
-
-const emit = defineEmits<ITextFieldEmits>()
+const emit = defineEmits<IDatePickerEmits>()
 
 /* -- variable(ref, reactive, computed) -- */
-useVModel(props, 'modelValue', emit)
+const vModel = useVModel(props, 'modelValue', emit)
 
 /* -- function -- */
 
 /* -- watch -- */
 
 /* -- life cycle -- */
-const { value, errorMessage } = useField(props.labelText, 'required')
 </script>
 
 <style lang="scss" scoped>
-.textField {
+$dp__border_radius: 8px !default;
+
+#datePicker {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
@@ -77,38 +70,17 @@ const { value, errorMessage } = useField(props.labelText, 'required')
   width: 100%;
   margin: 2em 0px 1em;
 
-  &-icon {
-    margin: 0px 8px;
-  }
-
-  small {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-left: v-bind("icon && 'calc(24px + 0.5rem)'");
-    padding-top: 0.25rem;
-    padding-left: 0.5rem;
-
-    color: v-bind("colorStore.color.red.default");
-    font-size: 14px;
-    transition: 0.2s;
-
-    .error-text {
-      margin-left: 0.5rem;
-    }
-  }
-
-  textarea {
+  input {
     flex-grow: 1;
 
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 100%;
-    min-height: 104px;
+    min-height: 56px;
     padding: 0.75rem 1rem;
 
+    transition: 0.2s;
     font: 15px/24px 'Noto Sans JP', sans-serif;
     box-sizing: border-box;
     border: 0px solid v-bind("colorStore.color.black.lighten[2]");

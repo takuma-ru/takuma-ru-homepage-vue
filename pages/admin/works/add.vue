@@ -3,6 +3,10 @@
     <h1>
       Add my work to works
     </h1>
+    <div>
+      {{ title }}
+      {{ description }}
+    </div>
     <div class="contents">
       <TextField
         v-model:model-value="title"
@@ -13,6 +17,16 @@
         v-model:model-value="description"
         icon="description"
         label-text="概要"
+      />
+      <DatePicker
+        v-model:model-value="developmentPeriodStart"
+        icon="line_start_circle"
+        label-text="開発開始"
+      />
+      <DatePicker
+        v-model:model-value="developmentPeriodEnd"
+        icon="line_end_circle"
+        label-text="開発終了"
       />
       <div class="buttons">
         <Button
@@ -40,8 +54,8 @@
 
 /* -- variable(ref, reactive, computed) -- */
 const description = ref('')
-const developmentPeriodStart = ref('')
-const developmentPeriodEnd = ref('')
+const developmentPeriodStart = ref(new Date())
+const developmentPeriodEnd = ref(new Date())
 const developmentType = ref('')
 const imgs = ref('')
 const links = ref('')
@@ -72,6 +86,8 @@ const submit = () => {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      margin-top: 1.5rem;
     }
   }
 }
