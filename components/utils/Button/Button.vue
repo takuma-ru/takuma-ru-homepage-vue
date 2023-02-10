@@ -1,6 +1,6 @@
 <template>
   <button
-    class="button"
+    class="Button"
     :disabled="disabled"
     :size="size"
     :fab="fab"
@@ -12,7 +12,7 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="iconProps?.color ? iconProps.color : outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
+        :color="iconProps?.color ? iconProps.color : outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(backgroundColor)"
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
@@ -51,7 +51,7 @@ export interface IButtonProps {
 const props = withDefaults(defineProps<IButtonProps>(), {
   icon: undefined,
   iconProps: undefined,
-  color: '#5498ff',
+  color: undefined,
   size: 'normal',
   to: undefined
 })
@@ -64,26 +64,36 @@ const colorStore = useColorStore()
 /* -- state -- */
 
 /* -- variable(ref, reactive, computed) -- */
+const backgroundColor = computed(() => {
+  return props.color ? props.color : colorStore.color.theme.text
+})
 
 /* -- function -- */
 const click = () => {
-  props.to ? navigateTo(props.to, { external: true }) : emit('click')
+  if (props.to) {
+    if (props.to.includes('https://') || props.to.includes('http://')) {
+      window.open(props.to, '_blank')
+    } else {
+      navigateTo(props.to, { external: true })
+    }
+  } else {
+    emit('click')
+  }
 }
 
 /* -- watch -- */
 /* -- life cycle -- */
-
 </script>
 
 <style lang="scss" scoped>
-.button {
+.Button {
   position: relative;
   width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
   height: 100%;
 
   border: none;
   border-radius: 0.5rem;
-  background-color: v-bind("props.color");
+  background-color: v-bind("backgroundColor");
   cursor: pointer;
   outline: none;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -101,8 +111,8 @@ const click = () => {
 
     text-align: center;
     font-size: 16px;
-    font-weight: 600;
-    color: v-bind("props.color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(props.color)");
+    font-weight: 500;
+    color: v-bind("color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(backgroundColor)");
     white-space: nowrap;
 
     p {
@@ -183,7 +193,7 @@ const click = () => {
   &[outlined = true] {
     background-color: transparent;
 
-    border: solid 2px v-bind("props.color");
+    border: solid 2px v-bind("backgroundColor");
     .text {
       color: v-bind("colorStore.color.theme.text");
       font-weight: 600;
@@ -225,10 +235,10 @@ const click = () => {
     padding: 0px;
 
     background-color: transparent;
-    border-radius: 0.4em;
+    border-radius: 50%;
 
     &:hover::before {
-      border-radius: 25%;
+      border-radius: 50%;
     }
 
     .text {

@@ -216,6 +216,7 @@ definePageMeta({
     .description {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
 
       position: relative;
       width: 100%;
