@@ -41,11 +41,11 @@
     </div>
 
     <div class="buttons">
-      <Button
+      <!-- <Button
         is-icon
         icon="admin_panel_settings"
         @click="navigateTo('/admin')"
-      />
+      /> -->
       <ColorModeButton />
     </div>
   </div>
