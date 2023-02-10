@@ -52,12 +52,14 @@
       </h1>
       <div class="description">
         <p class="first-contents">
-          I am currently a student at a National Institute of Technology College.<br>
+          I am currently enrolled in a National College of Technology.<br>
           I am majoring in Information Processing and Software Development.<br>
+          I am currently doing my thesis on "Development of an Automatic Agitating Composting Toilet using IoT" and I am in charge of controlling and managing sensor data and developing applications.<br>
+          At school, I mainly study web in general and game development; I use my web knowledge for my work and my game knowledge for teaching junior students.<br>
         </p>
         <div class="second-contents">
           <AchievementCard
-            :product-id="productDataStore.searchProductData('ZBTraN6IoRXfusw6l30N').productId"
+            :product-id="productDataStore.searchProductData('b6a65930-f0d5-4c47-aa1b-ebe4864f699a').id"
           />
         </div>
       </div>
@@ -86,11 +88,33 @@
         </HighLight>
       </h1>
       <div class="description">
-        <p class="first-contents">
-          We are good at implementing the "front end," the part of the Web that the end user touches.<br>
-          In particular, <HighLight delay="2000">Vue.js (NuxtJs)</HighLight> is the framework I am best at, and I also develop libraries for it!<br>
-          Of course I can also do React and Svelte.
-        </p>
+        <span class="first-contents">
+          <p>
+            We are good at implementing the "front end," the part of the Web that the end user touches.
+          </p>
+          <p>
+            In particular, <HighLight delay="2000">
+              Vue.js (NuxtJs)
+            </HighLight> is the framework I am best at, and I also develop libraries for it!
+          </p>
+          <p>
+            Of course I can also do React and Svelte.
+          </p>
+          <p>
+            A representative work using the frontend is "CHISK".The concept is "Have fun performing tasks" and the UI and UX are pop and friendly.
+          </p>
+          <p>
+            We are also involved in library development, albeit on a smaller scale. vue-swipe-modal" is in some demand and has been recognized and supported by JetBrains as OSS.
+          </p>
+        </span>
+        <div class="second-contents">
+          <AchievementCard
+            :product-id="productDataStore.searchProductData('3c1b18f2-a88d-4bce-a587-43d4b10c4b9d').id"
+          />
+          <AchievementCard
+            :product-id="productDataStore.searchProductData('9bd0a267-0aa8-427f-a930-abcfc549233a').id"
+          />
+        </div>
       </div>
       <Button
         fit-content
@@ -138,6 +162,7 @@
           I have a basic understanding of how to handle the following technologies
         </p>
         <div class="second-contents">
+          <img src="https://skillicons.dev/icons?i=c,cs,cpp,codepen,css,express,figma,firebase,gcp,git,github,html,idea,js,nextjs,nodejs,nuxtjs,pug,py,raspberrypi,react,rollupjs,sass,supabase,svelte,svg,ts,unity,vite,vue,webpack" alt="">
         </div>
       </div>
       <Button
@@ -198,7 +223,7 @@ definePageMeta({
 
     position: relative;
     width: 100%;
-    height: calc((var(--svh, 1vh) * 100) - 64px - 2rem);
+    min-height: calc((var(--svh, 1vh) * 100) - 64px - 2rem);
     padding: 1rem 0px;
 
     h1 {
@@ -216,6 +241,7 @@ definePageMeta({
     .description {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
 
       position: relative;
       width: 100%;
@@ -231,6 +257,10 @@ definePageMeta({
       .second-contents {
         position: relative;
         width: 100%;
+
+        img {
+          width: 100%;
+        }
 
         .contents-title {
           margin-bottom: 0.5rem;

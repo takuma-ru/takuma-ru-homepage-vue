@@ -79,6 +79,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@vueuse/nuxt',
+    '@nuxtjs/supabase',
     [
       '@pinia/nuxt',
       {

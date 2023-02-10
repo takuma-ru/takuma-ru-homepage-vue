@@ -26,7 +26,7 @@
     </div>
 
     <div
-      v-if="displayStatusStore.displaySize !== 'sm'"
+      v-if="displayStatusStore.displaySize !== 'sm' && route.path.indexOf('/admin') !== 0"
       class="link-list"
     >
       <Button
@@ -41,11 +41,11 @@
     </div>
 
     <div class="buttons">
-      <Button
+      <!-- <Button
         is-icon
         icon="admin_panel_settings"
         @click="navigateTo('/admin')"
-      />
+      /> -->
       <ColorModeButton />
     </div>
   </div>

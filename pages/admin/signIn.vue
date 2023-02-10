@@ -22,8 +22,7 @@
       <p>You must be logged in with an authorized account to access this page</p>
       <hr>
       <div class="buttons">
-        <SignInButton provider="github.com" style="margin-bottom: 1rem;" />
-        <SignInButton provider="google.com" />
+        <SignInButton provider="github" />
       </div>
     </div>
   </div>
@@ -33,7 +32,7 @@
 /* -- type, interface -- */
 
 /* -- store -- */
-const authStore = useAuthStore()
+const userDataStore = useUserDataStore()
 const colorStore = useColorStore()
 const displayStatusStore = useDisplayStatusStore()
 
@@ -47,14 +46,14 @@ const displayStatusStore = useDisplayStatusStore()
 
 /* -- life cycle -- */
 onBeforeMount(() => {
-  if (authStore.isLoggedIn) {
-    useRouter().push('/admin')
+  if (userDataStore.supabaseUser?.id) {
+    navigateTo('/admin')
   }
 })
 
-watch(authStore.loggedInUser, (newVal) => {
-  if (newVal.uid) {
-    useRouter().push('/admin')
+watch(userDataStore.supabaseUser!, (newVal) => {
+  if (newVal.id) {
+    navigateTo('/admin')
   }
 })
 

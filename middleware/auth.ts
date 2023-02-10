@@ -1,29 +1,14 @@
-interface IVerifyIsAdminRes {
+/* interface IVerifyIsAdminRes {
   isAdmin?: boolean
   message: string
-}
+} */
 
-export default defineNuxtRouteMiddleware(async () => {
+export default defineNuxtRouteMiddleware(() => {
   if (!process.server) {
-    const authStore = useAuthStore()
+    const supabaseUser = useSupabaseUser()
 
-    await authStore.checkAuthState()
-
-    if (authStore.loggedInUser.uid && authStore.idToken) {
-      const verifyIsAdminRes:IVerifyIsAdminRes = await $fetch('http://localhost:5001/takuma-ru-homepage/asia-northeast1/api/verify-is-admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: {
-          idToken: authStore.idToken
-        }
-      })
-
-      if (!verifyIsAdminRes.isAdmin) {
-        // authStore.trySignOut()
-        return navigateTo('/admin/error')
-      }
+    if (supabaseUser.value) {
+      console.log('is logged in!')
     } else {
       return navigateTo('/admin/signIn')
     }

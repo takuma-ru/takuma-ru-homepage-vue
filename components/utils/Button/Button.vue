@@ -1,8 +1,8 @@
 <template>
   <button
-    id="Button"
+    class="Button"
     :disabled="disabled"
-    :size="!isIcon && size"
+    :size="size"
     :fab="fab"
     :icon="isIcon"
     :outlined="outlined"
@@ -12,13 +12,15 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
+        :color="iconProps?.color ? iconProps.color : outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(backgroundColor)"
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
         :style="!isIcon && 'margin-right: 0.75rem'"
       />
-      <slot />
+      <p>
+        <slot />
+      </p>
     </div>
   </button>
 </template>
@@ -49,7 +51,7 @@ export interface IButtonProps {
 const props = withDefaults(defineProps<IButtonProps>(), {
   icon: undefined,
   iconProps: undefined,
-  color: '#5498ff',
+  color: undefined,
   size: 'normal',
   to: undefined
 })
@@ -62,26 +64,36 @@ const colorStore = useColorStore()
 /* -- state -- */
 
 /* -- variable(ref, reactive, computed) -- */
+const backgroundColor = computed(() => {
+  return props.color ? props.color : colorStore.color.theme.text
+})
 
 /* -- function -- */
 const click = () => {
-  props.to ? navigateTo(props.to, { external: true }) : emit('click')
+  if (props.to) {
+    if (props.to.includes('https://') || props.to.includes('http://')) {
+      window.open(props.to, '_blank')
+    } else {
+      navigateTo(props.to, { external: true })
+    }
+  } else {
+    emit('click')
+  }
 }
 
 /* -- watch -- */
 /* -- life cycle -- */
-
 </script>
 
 <style lang="scss" scoped>
-#Button {
+.Button {
   position: relative;
   width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
   height: 100%;
 
   border: none;
   border-radius: 0.5rem;
-  background-color: v-bind("props.color");
+  background-color: v-bind("backgroundColor");
   cursor: pointer;
   outline: none;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -99,9 +111,18 @@ const click = () => {
 
     text-align: center;
     font-size: 16px;
-    font-weight: 600;
-    color: v-bind("props.color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(props.color)");
+    font-weight: 500;
+    color: v-bind("color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(backgroundColor)");
     white-space: nowrap;
+
+    p {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+
+      vertical-align: text-top;
+      margin: 0px;
+    }
 
     span {
       line-height: 24px;
@@ -169,28 +190,10 @@ const click = () => {
     }
   }
 
-  &[icon = true] {
-    width: 40px;
-    height: 40px;
-
-    background-color: transparent;
-
-    &:hover::before {
-      border-radius: 25%;
-    }
-
-    .text {
-      height: calc(100% - 16px);
-
-      padding: 0px;
-      margin: 0px;
-    }
-  }
-
   &[outlined = true] {
     background-color: transparent;
 
-    border: solid 2px v-bind("props.color");
+    border: solid 2px v-bind("backgroundColor");
     .text {
       color: v-bind("colorStore.color.theme.text");
       font-weight: 600;
@@ -223,6 +226,31 @@ const click = () => {
 
     &:hover::before {
       border-radius: 16px;
+    }
+  }
+
+  &[icon = true] {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+
+    background-color: transparent;
+    border-radius: 50%;
+
+    &:hover::before {
+      border-radius: 50%;
+    }
+
+    .text {
+      height: calc(100%);
+
+      padding: 0px;
+      margin: 0px;
+    }
+
+    &[size = "small"] {
+      width: 32px;
+      height: 32px;
     }
   }
 }

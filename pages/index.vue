@@ -7,8 +7,8 @@
       </h1>
       <div class="media">
         <Button
-          color="transparent"
           icon="person"
+          fit-content
           :icon-props="{
             fill: true
           }"
@@ -17,8 +17,8 @@
           Go to About Me
         </Button>
         <Button
-          color="transparent"
           icon="category"
+          fit-content
           :icon-props="{
             fill: true
           }"
@@ -27,8 +27,8 @@
           Go to My Portfolio
         </Button>
         <Button
-          color="transparent"
           icon="mail"
+          fit-content
           :icon-props="{
             fill: true
           }"
@@ -64,7 +64,7 @@ definePageMeta({
 #index {
   display: grid;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
 
   height: 100%;
 
@@ -76,12 +76,8 @@ definePageMeta({
     .media {
       display: flex;
       flex-flow: column;
-
-      #Button {
-        width: fit-content;
-
-        margin-bottom: 1rem;
-      }
+      align-items: flex-start;
+      row-gap: 1rem;
     }
   }
 }

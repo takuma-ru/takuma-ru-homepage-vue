@@ -16,7 +16,7 @@
     </Button>
     <div class="imgs">
       <img
-        :src="productData.imgSrc[0]"
+        :src="productData.imgs[0]"
         alt="Product feature graphics"
       >
     </div>
@@ -64,8 +64,9 @@
             <Button
               v-for="linkData in productData.links"
               :key="linkData.name"
+              color="transparent"
+              fit-content
               icon="link"
-              :color="colorStore.color.theme.text"
               :to="linkData.url"
             >
               {{ linkData.name }}
@@ -94,18 +95,18 @@ const productData = computed(() => {
 })
 
 const startDate = computed(() => {
-  const startDate = productData.value.developmentPeriod.start.toDate()
+  const startDate = productData.value.developmentPeriodStart
 
   return startDate.getFullYear() + '.' + (startDate.getMonth() + 1)
 })
 
 const endDate = computed(() => {
-  const endDate = productData.value.developmentPeriod.end
+  const endDate = productData.value.developmentPeriodEnd
 
-  if (endDate === 'now') {
+  if (endDate === null) {
     return new Date().getFullYear() + '.' + (new Date().getMonth() + 1)
   } else {
-    return endDate.toDate().getFullYear() + '.' + (endDate.toDate().getMonth() + 1)
+    return endDate.getFullYear() + '.' + (endDate.getMonth() + 1)
   }
 })
 
@@ -230,11 +231,10 @@ definePageMeta({
 
         .buttons {
           display: flex;
-          flex-flow: column;
-
-          #Button {
-            margin-bottom: 1rem;
-          }
+          flex-wrap: wrap;
+          width: 100%;
+          column-gap: 1rem;
+          row-gap: 1rem;
         }
       }
     }

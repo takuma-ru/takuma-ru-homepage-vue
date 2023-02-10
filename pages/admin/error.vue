@@ -12,8 +12,7 @@
       <p>Server could not verify authorization to view this page</p>
       <div class="signin-methods">
         <h3>SignIn method</h3>
-        <SignInButton provider="github.com" style="margin-bottom: 0.5rem;" />
-        <SignInButton provider="google.com" />
+        <SignInButton provider="github" />
       </div>
     </div>
   </div>

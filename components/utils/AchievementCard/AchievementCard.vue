@@ -2,7 +2,7 @@
   <div
     id="achievementCard"
     :style="{
-      backgroundImage: `url('${productData.imgSrc[0]}')`
+      backgroundImage: `url('${productData.imgs[0]}')`
     }"
     @click="moveProductPage"
   >
@@ -67,7 +67,7 @@ const moveProductPage = () => {
   padding: 1rem;
 
   color: v-bind("colorStore.color.white.default");
-  border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[2] : colorStore.color.white.darken[2]");
+  border: solid 2px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.theme.complementaryDarken[3] : colorStore.color.white.darken[2]");
   border-radius: 0.5rem;
   box-sizing: border-box;
   background-color: v-bind("colorStore.color.theme.complementaryDarken[2]");
@@ -84,7 +84,7 @@ const moveProductPage = () => {
     left: 0px;
     right: 0px;
 
-    border-radius: 0.65rem;
+    border-radius: 0.35rem;
     background-color: #0000009A;
   }
 

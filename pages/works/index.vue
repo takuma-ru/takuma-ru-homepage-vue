@@ -5,13 +5,8 @@
   >
     <AchievementCard
       v-for="productData in productDataStore.productDataList"
-      :key="productData.productId"
-      :product-id="productData.productId"
-      :style="{
-        marginRight: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
-        marginLeft: displayStatusStore.displaySize !== 'sm' ? '0.5rem' : 0,
-        marginBottom: '1rem'
-      }"
+      :key="productData.id"
+      :product-id="productData.id"
     />
   </div>
 </template>
@@ -41,6 +36,8 @@ definePageMeta({
 #works {
   display: grid;
   justify-content: space-around;
+  row-gap: 1rem;
+  column-gap: 1rem;
 
   padding-top: 2rem;
 
