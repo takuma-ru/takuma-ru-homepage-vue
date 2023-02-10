@@ -64,8 +64,9 @@
             <Button
               v-for="linkData in productData.links"
               :key="linkData.name"
+              color="transparent"
+              fit-content
               icon="link"
-              :color="colorStore.color.theme.text"
               :to="linkData.url"
             >
               {{ linkData.name }}
@@ -230,11 +231,10 @@ definePageMeta({
 
         .buttons {
           display: flex;
-          flex-flow: column;
-
-          #Button {
-            margin-bottom: 1rem;
-          }
+          flex-wrap: wrap;
+          width: 100%;
+          column-gap: 1rem;
+          row-gap: 1rem;
         }
       }
     }

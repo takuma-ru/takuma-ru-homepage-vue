@@ -28,6 +28,12 @@
         icon="line_end_circle"
         label-text="開発終了"
       />
+      <Combobox
+        v-model:model-value="developmentType"
+        icon="keyboard"
+        :items="['Graduation research', 'Personal development', 'Team development']"
+        title="開発種類"
+      />
       <div class="buttons">
         <Button
           icon="chevron_left"
