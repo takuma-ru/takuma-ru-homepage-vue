@@ -9,10 +9,10 @@
         icon="title"
         label-text="プロダクト名"
       />
-      <TextField
+      <TextArea
         v-model:model-value="description"
         icon="description"
-        label-text="詳細"
+        label-text="概要"
       />
       <div class="buttons">
         <Button
@@ -35,7 +35,6 @@
 
 <script lang="ts" setup>
 /* -- store -- */
-const colorStore = useColorStore()
 
 /* -- props, emit -- */
 

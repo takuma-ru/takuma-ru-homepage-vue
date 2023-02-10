@@ -5,12 +5,11 @@
         v-if="icon"
         :icon="icon"
       />
-      <input
-        v-model="value"
-        :type="type"
+      <textarea
+        v-model="(value)"
         :name="labelText"
         :placeholder="placeholder"
-      >
+      />
       <label>{{ labelText }}</label>
     </div>
     <small v-if="errorMessage">
@@ -37,7 +36,6 @@ export interface ITextFieldProps {
   labelText: string
   modelValue: string
   placeholder: string
-  type?: 'text' | 'password'
 }
 
 export interface ITextFieldEmits {
@@ -100,17 +98,16 @@ const { value, errorMessage } = useField(props.labelText, 'required')
     }
   }
 
-  input {
+  textarea {
     flex-grow: 1;
 
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 100%;
-    min-height: 56px;
+    min-height: 104px;
     padding: 0.75rem 1rem;
 
-    transition: 0.2s;
     font: 15px/24px 'Noto Sans JP', sans-serif;
     box-sizing: border-box;
     border: 0px solid v-bind("colorStore.color.black.lighten[2]");
