@@ -48,8 +48,11 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.5",
     "@takuma-ru/vue-swipe-modal": "^4.0.7",
+    "@vee-validate/i18n": "^4.7.4",
+    "@vee-validate/rules": "^4.7.4",
     "devicon": "^2.15.1",
     "pinia": "^2.0.25",
+    "vee-validate": "^4.7.4",
     "vite-plugin-eslint": "^1.8.1"
   }
 }
