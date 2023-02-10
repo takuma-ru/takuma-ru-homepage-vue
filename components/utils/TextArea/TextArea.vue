@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/valid-v-model -->
 <template>
   <div class="textField">
     <div class="input">
@@ -7,7 +6,7 @@
         :icon="icon"
       />
       <textarea
-        v-model="(value as any)"
+        v-model="value"
         :name="labelText"
         :placeholder="placeholder"
       />

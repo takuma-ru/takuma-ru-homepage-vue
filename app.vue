@@ -7,8 +7,10 @@
 </template>
 
 <script lang="ts" setup>
+import { registerSW } from 'virtual:pwa-register'
 import 'devicon'
 
+registerSW()
 /* -- type, interface -- */
 
 /* -- store -- */
