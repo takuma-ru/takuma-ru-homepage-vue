@@ -2,7 +2,7 @@ module.exports = [
   {
     type: 'input',
     name: 'pageName',
-    message: 'Please enter a page name (※ kebab-case)',
+    message: 'Please enter a page name',
     validate: input => input !== ''
   },
   {

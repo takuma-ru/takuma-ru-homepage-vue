@@ -1,229 +1,37 @@
 <template>
-  <button
-    id="Button"
-    :disabled="disabled"
-    :size="!isIcon && size"
-    :fab="fab"
-    :icon="isIcon"
-    :outlined="outlined"
-    @click="click()"
-  >
-    <div class="text">
-      <Icon
-        v-if="icon"
-        :icon="icon"
-        :color="outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(color)"
-        size="24px"
-        :fill="props.iconProps?.fill"
-        :wght="500"
-        :style="!isIcon && 'margin-right: 0.75rem'"
-      />
-      <slot />
-    </div>
-  </button>
+  <div class="utils-button">button</div>
 </template>
 
 <script lang="ts" setup>
-import { IIconProps } from '../Icon/Icon.vue'
-import { IconNameType } from '~/types/icon/IconNameType'
-
 /* -- type, interface -- */
-export interface IButtonEmits {
-  (e: 'click'): void
+export interface IButtonProps {
+  modelValue: any
 }
 
-export interface IButtonProps {
-  disabled?: boolean
-  icon?: IconNameType
-  iconProps?: IIconProps
-  color?: 'transparent' | string
-  size?: 'small' | 'normal' | 'large'
-  fab?: boolean
-  isIcon?: boolean
-  outlined? :boolean
-  fitContent?: boolean
-  to?: string
+export interface IButtonEmits {
+  (e: 'update:modelValue'): void
 }
+
+/* -- store -- */
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IButtonProps>(), {
-  icon: undefined,
-  iconProps: undefined,
-  color: '#5498ff',
-  size: 'normal',
-  to: undefined
+  modelValue: false
 })
 
 const emit = defineEmits<IButtonEmits>()
 
-/* -- store -- */
-const colorStore = useColorStore()
-
-/* -- state -- */
-
 /* -- variable(ref, reactive, computed) -- */
+const vModel = useVModel(props, 'modelValue', emit)
 
 /* -- function -- */
-const click = () => {
-  props.to ? navigateTo(props.to, { external: true }) : emit('click')
-}
 
 /* -- watch -- */
-/* -- life cycle -- */
 
+/* -- life cycle -- */
 </script>
 
 <style lang="scss" scoped>
-#Button {
-  position: relative;
-  width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
-  height: 100%;
-
-  border: none;
-  border-radius: 0.5rem;
-  background-color: v-bind("props.color");
-  cursor: pointer;
-  outline: none;
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
-
-  .text {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-
-    position: relative;
-    z-index: 1;
-    height: 24px;
-    margin: 0rem 0.4em;
-
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    color: v-bind("props.color === 'transparent' ? colorStore.color.theme.text : dependsLuminanceColor(props.color)");
-    white-space: nowrap;
-
-    span {
-      line-height: 24px;
-    }
-  }
-
-  &:hover::before {
-    position: absolute;
-    z-index: 2;
-    content: '';
-    width: 100%;
-    height: 100%;
-
-    top: 0%;
-    left: 0%;
-
-    border-radius: 8px;
-    background-color: #CCCCCC2D;
-  }
-
-  &:disabled {
-    color: rgba(16, 16, 16, 0.5);
-    cursor: not-allowed;
-
-    .text {
-      color: rgba(16, 16, 16, 0.5);
-    }
-
-    svg path {
-      fill: rgba(16, 16, 16, 0.5);
-    }
-
-    &::after {
-      position: absolute;
-      z-index: 0;
-      content: '';
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-
-      border-radius: 8px;
-      background-color: v-bind('colorStore.color.black.lighten[2]');
-    }
-  }
-
-  &:disabled:hover::before {
-    position: absolute;
-    z-index: 1;
-    content: '';
-    width: 100%;
-    height: 100%;
-
-    top: 0%;
-    left: 0%;
-
-    border-radius: 8px;
-    background-color: #CCCCCC00;
-  }
-
-  &[fab] {
-    .text {
-      height: calc(100% - 16px);
-      padding: 8px;
-    }
-  }
-
-  &[icon = true] {
-    width: 40px;
-    height: 40px;
-
-    background-color: transparent;
-
-    &:hover::before {
-      border-radius: 25%;
-    }
-
-    .text {
-      height: calc(100% - 16px);
-
-      padding: 0px;
-      margin: 0px;
-    }
-  }
-
-  &[outlined = true] {
-    background-color: transparent;
-
-    border: solid 2px v-bind("props.color");
-    .text {
-      color: v-bind("colorStore.color.theme.text");
-      font-weight: 600;
-    }
-  }
-
-  &[size = "small"] {
-    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
-    height: 32px;
-
-    border-radius: 0.4em;
-    &:hover::before {
-      border-radius: 0.3em;
-    }
-
-    .text {
-      font-weight: 500;
-    }
-  }
-
-  &[size = "normal"] {
-    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
-    height: 40px;
-  }
-
-  &[size = "large"] {
-    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
-    height: 64px;
-    border-radius: 16px;
-
-    &:hover::before {
-      border-radius: 16px;
-    }
-  }
+.utils-button {
 }
 </style>

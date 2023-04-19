@@ -4,20 +4,17 @@ import Button from './Button.vue'
 export default {
   title: 'components/utils/Button',
   component: Button,
-  argTypes: {
-  }
+  argTypes: {}
 } as Meta
 
 const Template: Story = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Button },
-  setup () {
+  setup() {
     return { args }
   },
   template: '<Button v-bind="args">{{ args.default }}</Button>'
 })
 
 export const Primary = Template.bind({})
-Primary.args = {
-  default: 'Button text'
-}
+Primary.args = {}
