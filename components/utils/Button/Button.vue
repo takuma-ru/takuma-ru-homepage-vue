@@ -32,6 +32,5 @@ const vModel = useVModel(props, 'modelValue', emit)
 </script>
 
 <style lang="scss" scoped>
-.utils-button {
-}
+.utils-button {}
 </style>
