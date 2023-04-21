@@ -8,6 +8,10 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+await useFetch(`/api/scssFileGenerate`);
+</script>
+
 <style lang="scss" scoped>
 .my-name {
   position: absolute;

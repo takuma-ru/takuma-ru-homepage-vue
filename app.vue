@@ -1,10 +1,4 @@
 <script lang="ts" setup>
-const msg = ref('Hello World')
-const test = (a: string, b: string, c: string, d: string) => {
-  console.log(a, b, c, d)
-}
-
-test('252.44deg', '#9ef9e0 0 %', '#d3b7ee 50.52 %', '#ff825d 100 %')
 </script>
 
 <template>
@@ -43,10 +37,10 @@ body {
   height: 100dvh;
   width: 100vw;
 
-  background: linear-gradient(252.44deg,
+  /* background: linear-gradient(252.44deg,
       #9ef9e0 0%,
       #d3b7ee 50.52%,
-      #ff825d 100%);
+      #ff825d 100%); */
 }
 </style>
 
