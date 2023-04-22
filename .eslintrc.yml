@@ -1,15 +1,15 @@
 env:
   browser: true
   es2022: true
+  node: true
 extends:
+  - 'plugin:vue/vue3-recommended'
   - 'eslint:recommended'
-  - 'plugin:vue/vue3-essential'
   - 'plugin:@typescript-eslint/recommended'
-  - '@nuxtjs/eslint-config-typescript'
   - 'plugin:storybook/recommended'
   - '@vue/prettier'
 overrides: []
-parser: 'vue-eslint-parser'
+parser: '@typescript-eslint/parser'
 parserOptions:
   parser: '@typescript-eslint/parser'
   ecmaVersion: latest
@@ -17,4 +17,10 @@ parserOptions:
 plugins:
   - vue
   - '@typescript-eslint'
-rules: { 'vue/no-v-model-argument': 0, 'vue/multi-word-component-names': 'off' }
+  - prettier
+rules:
+  {
+    'vue/no-v-model-argument': 0,
+    'vue/multi-word-component-names': 'off',
+    'prettier/prettier': 'error',
+  }

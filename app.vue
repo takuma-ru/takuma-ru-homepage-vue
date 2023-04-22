@@ -1,9 +1,18 @@
 <template>
-  <div v-cloak id="app">
+  <div
+    v-cloak
+    id="app"
+  >
     <div class="main-wrapper">
-      <div v-cloak class="main">
+      <div
+        v-cloak
+        class="main"
+      >
         <NuxtPage />
       </div>
+    </div>
+    <div class="bottom-contents">
+      <ColorModeButton />
     </div>
   </div>
 </template>
@@ -37,17 +46,29 @@ body {
 }
 
 .dark-mode #app {
-  background: linear-gradient(252.44deg, #055A76 0%, #5B2591 50.52%, #930C18 100%);
+  background: linear-gradient(
+    252.44deg,
+    #055a76 0%,
+    #5b2591 50.52%,
+    #930c18 100%
+  );
 }
 
 .light-mode #app {
-  background: linear-gradient(252.44deg, #9EF9E0 0%, #D3B7EE 50.52%, #FF825D 100%);
+  background: linear-gradient(
+    252.44deg,
+    #9ef9e0 0%,
+    #d3b7ee 50.52%,
+    #ff825d 100%
+  );
 }
 
 #app {
   height: 100dvh;
   width: 100vw;
+
   color: v-bind('colorStore.value.theme.text');
+  transition: 0.2s;
 }
 
 .outline {
@@ -79,5 +100,16 @@ body {
     border-radius: 0.5rem;
     box-sizing: border-box;
   }
+}
+
+.bottom-contents {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  height: 48px;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 0;
 }
 </style>
