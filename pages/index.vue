@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-await useFetch(`/api/scssFileGenerate`);
 </script>
 
 <style lang="scss" scoped>
@@ -23,11 +22,5 @@ await useFetch(`/api/scssFileGenerate`);
 
   font-size: 96px;
   font-weight: bold;
-
-  .outline {
-    color: transparent;
-    text-stroke: 4px #000;
-    -webkit-text-stroke: 4px #000;
-  }
 }
 </style>

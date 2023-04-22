@@ -1,10 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+
   components: {
     dirs: ['components/logos', 'components/layouts', 'components/utils']
   },
 
   modules: [
+    '@nuxtjs/color-mode',
     '@vueuse/nuxt',
     [
       '@pinia/nuxt',

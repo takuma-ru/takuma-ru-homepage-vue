@@ -1,15 +1,18 @@
-<script lang="ts" setup>
-</script>
-
 <template>
-  <div id="app">
+  <div v-cloak id="app">
     <div class="main-wrapper">
-      <div class="main">
+      <div v-cloak class="main">
         <NuxtPage />
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+const colorStore = useColorStore()
+
+colorStore.setThemeFromColorMode()
+</script>
 
 <style lang="scss">
 @font-face {
@@ -33,14 +36,28 @@ body {
   font-family: 'Mona-Sans', sans-serif;
 }
 
+.dark-mode #app {
+  background: linear-gradient(252.44deg, #055A76 0%, #5B2591 50.52%, #930C18 100%);
+}
+
+.light-mode #app {
+  background: linear-gradient(252.44deg, #9EF9E0 0%, #D3B7EE 50.52%, #FF825D 100%);
+}
+
 #app {
   height: 100dvh;
   width: 100vw;
+  color: v-bind('colorStore.value.theme.text');
+}
 
-  /* background: linear-gradient(252.44deg,
-      #9ef9e0 0%,
-      #d3b7ee 50.52%,
-      #ff825d 100%); */
+.outline {
+  color: transparent;
+  text-stroke: 2px v-bind('colorStore.value.theme.text');
+  -webkit-text-stroke: 2px v-bind('colorStore.value.theme.text');
+}
+
+[v-cloak] {
+  display: none;
 }
 </style>
 
@@ -56,7 +73,7 @@ body {
     height: 100%;
     padding: 1rem;
     background: rgba(250, 252, 252, 0.05);
-    border: 4px solid #222625;
+    border: 4px solid v-bind('colorStore.value.theme.text');
     box-shadow: 0px 8px 40px rgba(34, 38, 37, 0.15);
     backdrop-filter: blur(3px);
     border-radius: 0.5rem;

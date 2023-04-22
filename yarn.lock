@@ -2425,6 +2425,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxtjs/color-mode@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@nuxtjs/color-mode@npm:3.2.0"
+  dependencies:
+    "@nuxt/kit": ^3.0.0
+    lodash.template: ^4.5.0
+    pathe: ^1.0.0
+  checksum: d6e24bfc2127c8f344070e911ad7d7400b45b2f7aa29305d10be09b1daa6fdfefe7f617198e8fb3c0b71a3bda8f097799e1c78831d18c7a7b1b3684d35e47e2c
+  languageName: node
+  linkType: hard
+
 "@nuxtjs/eslint-config-typescript@npm:^12.0.0":
   version: 12.0.0
   resolution: "@nuxtjs/eslint-config-typescript@npm:12.0.0"
@@ -13966,6 +13977,7 @@ __metadata:
   resolution: "nuxt-app@workspace:."
   dependencies:
     "@babel/core": ^7.20.2
+    "@nuxtjs/color-mode": ^3.2.0
     "@nuxtjs/eslint-config-typescript": ^12.0.0
     "@nuxtjs/supabase": ^0.3.0
     "@pinia/nuxt": ^0.4.8
