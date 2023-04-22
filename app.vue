@@ -3,6 +3,9 @@
     v-cloak
     id="app"
   >
+    <div class="top-contents">
+      <TopContents />
+    </div>
     <div class="main-wrapper">
       <div
         v-cloak
@@ -68,7 +71,7 @@ body {
   width: 100vw;
 
   color: v-bind('colorStore.value.theme.text');
-  transition: 0.2s;
+  transition: color background border 0.2s;
 }
 
 .outline {
@@ -100,6 +103,17 @@ body {
     border-radius: 0.5rem;
     box-sizing: border-box;
   }
+}
+
+.top-contents {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  height: 48px;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 0;
 }
 
 .bottom-contents {
