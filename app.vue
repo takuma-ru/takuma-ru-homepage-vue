@@ -6,14 +6,20 @@
     <div class="top-contents">
       <TopContents />
     </div>
-    <div class="main-wrapper">
+    <TransitionGroup
+      name="main-wrapper-transition"
+      tag="div"
+      class="main-wrapper"
+    >
+      <NavigationBar />
       <div
         v-cloak
         class="main"
       >
+        <NavigationBarButton />
         <NuxtPage />
       </div>
-    </div>
+    </TransitionGroup>
     <div class="bottom-contents">
       <ColorModeButton />
     </div>
@@ -21,6 +27,8 @@
 </template>
 
 <script lang="ts" setup>
+import 'material-symbols'
+
 const colorStore = useColorStore()
 
 colorStore.setThemeFromColorMode()
@@ -87,6 +95,8 @@ body {
 
 <style lang="scss" scoped>
 .main-wrapper {
+  display: flex;
+  column-gap: 24px;
   position: absolute;
   left: 1.5rem;
   right: 1.5rem;
@@ -94,6 +104,7 @@ body {
   bottom: 3rem;
 
   .main {
+    width: 100%;
     height: 100%;
     padding: 1rem;
     background: rgba(250, 252, 252, 0.05);
@@ -125,5 +136,31 @@ body {
   left: 1.5rem;
   right: 1.5rem;
   bottom: 0;
+}
+
+.main-wrapper-transition {
+  &-enter {
+    &-from {
+      opacity: 0 !important;
+      transform: translateX(30px) !important;
+    }
+    &-active {
+      transition: all 0.5s ease;
+    }
+    &-to {
+    }
+  }
+
+  &-leave {
+    &-from {
+    }
+    &-active {
+      transition: all 0.5s ease;
+    }
+    &-to {
+      opacity: 0 !important;
+      transform: translateX(30px) !important;
+    }
+  }
 }
 </style>

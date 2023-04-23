@@ -12675,6 +12675,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"material-symbols@npm:latest":
+  version: 0.5.5
+  resolution: "material-symbols@npm:0.5.5"
+  checksum: 77ec4b8b63771cf831a47b9867675d2b5b77bfd2ad5a4c72b455e38187321215b479d13ceaa9527bce125b6e82224421eb3a6bbec01ab4cd964f3fa06160f56a
+  languageName: node
+  linkType: hard
+
 "md5.js@npm:^1.3.4":
   version: 1.3.5
   resolution: "md5.js@npm:1.3.5"
@@ -13711,6 +13718,7 @@ __metadata:
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-vue: ^9.11.0
     hygen: ^6.2.11
+    material-symbols: latest
     nuxt: ^3.4.1
     pinia: ^2.0.25
     prettier: ^2.8.7
