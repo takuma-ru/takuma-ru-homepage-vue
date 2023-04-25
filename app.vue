@@ -11,9 +11,10 @@
       tag="div"
       class="main-wrapper"
     >
-      <NavigationBar />
+      <NavigationBar :key="1" />
       <div
         v-cloak
+        :key="2"
         class="main"
       >
         <NavigationBarButton />
@@ -75,6 +76,7 @@ body {
 }
 
 #app {
+  position: relative;
   height: 100dvh;
   width: 100vw;
 
@@ -142,10 +144,10 @@ body {
   &-enter {
     &-from {
       opacity: 0 !important;
-      transform: translateX(30px) !important;
+      transform: translateX(-128px) !important;
     }
     &-active {
-      transition: all 0.5s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     &-to {
     }
@@ -155,12 +157,20 @@ body {
     &-from {
     }
     &-active {
-      transition: all 0.5s ease;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     &-to {
       opacity: 0 !important;
-      transform: translateX(30px) !important;
+      transform: translateX(-128px) !important;
     }
+  }
+
+  &-move {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  &-leave-active {
+    position: absolute;
   }
 }
 </style>

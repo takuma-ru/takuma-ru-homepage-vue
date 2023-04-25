@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: false,
 
   components: {
-    dirs: ['components/logos', 'components/layouts', 'components/utils']
+    dirs: ['components/logos', 'components/layouts', 'components/utils'],
   },
 
   modules: [
@@ -12,9 +12,9 @@ export default defineNuxtConfig({
     [
       '@pinia/nuxt',
       {
-        autoImports: ['defineStore']
-      }
-    ]
+        autoImports: ['defineStore'],
+      },
+    ],
   ],
 
   imports: {
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       'composables/**',
       'utils',
       'utils/**/*.{ts,js,mjs,mts}',
-      'utils/**'
-    ]
-  }
+      'utils/**',
+    ],
+  },
 })
