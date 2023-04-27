@@ -76,15 +76,15 @@ const NEUTRAL_COLORS: IColorGradation = {
 }
 
 const LIGHT_THEME_COLORS: IColorStoreState['value']['theme'] = {
-  background: NEUTRAL_COLORS[200],
-  text: NEUTRAL_COLORS[900],
+  background: NEUTRAL_COLORS[900],
+  text: NEUTRAL_COLORS[200],
   subText: NEUTRAL_COLORS[700],
   relativeNeutral: NEUTRAL_COLORS,
 }
 
 const DARK_THEME_COLORS: IColorStoreState['value']['theme'] = {
-  background: NEUTRAL_COLORS[900],
-  text: NEUTRAL_COLORS[100],
+  background: NEUTRAL_COLORS[200],
+  text: NEUTRAL_COLORS[900],
   subText: NEUTRAL_COLORS[300],
   relativeNeutral: {
     100: NEUTRAL_COLORS[900],
@@ -110,7 +110,7 @@ export const useColorStore = defineStore('color', {
       neutral: NEUTRAL_COLORS,
       linear: {
         light:
-          'linear-gradient(252.44deg, #9EF9E0 0%, #D3B7EE 50.52%, #FF825D 100%)',
+          'linear-gradient(252.44deg, #12CCC9 0%, #BC86F2 50.52%, #FF825D 100%)',
         dark: 'linear-gradient(252.44deg, #055A76 0%, #5B2591 50.52%, #930C18 100%)',
       },
       theme: LIGHT_THEME_COLORS,

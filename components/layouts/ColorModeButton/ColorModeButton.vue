@@ -1,17 +1,31 @@
 <template>
   <div class="layouts-color-mode-button">
-    <input
-      id="toggle"
-      class="toggle-input"
-      type="checkbox"
-      v-model="isCheck"
-      v-on:change="handleOnChange"
+    <Icon
+      icon="light_mode"
+      :color="colorStore.value.theme.background"
+      :size="'20px'"
+      :wght="700"
     />
-    <label
-      for="toggle"
-      class="toggle-label"
+    <div class="button">
+      <input
+        id="toggle"
+        class="toggle-input"
+        type="checkbox"
+        v-model="isCheck"
+        v-on:change="handleOnChange"
+      />
+      <label
+        for="toggle"
+        class="toggle-label"
+      />
+      <span></span>
+    </div>
+    <Icon
+      icon="dark_mode"
+      :color="colorStore.value.theme.background"
+      :size="'20px'"
+      :wght="700"
     />
-    <span></span>
   </div>
 </template>
 
@@ -53,45 +67,58 @@ $border-radius: 12px;
 $border-width: 4px;
 
 .layouts-color-mode-button {
-  input {
-    display: none;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
 
-    &:checked {
-      + label {
-        background-color: transparent;
+  .button {
+    display: flex;
+    align-items: center;
+    user-select: none;
 
-        &:after {
-          left: calc((2 * $width) - $width - $border-width);
+    input {
+      display: none;
+      cursor: pointer;
+      user-select: none;
+
+      &:checked {
+        + label {
+          background-color: transparent;
+
+          &:after {
+            left: calc((2 * $width) - $width - $border-width);
+          }
         }
       }
     }
-  }
 
-  label {
-    width: calc(2 * $width);
-    height: $height;
-    background: transparent;
-    position: relative;
-    display: inline-block;
-    border-radius: $border-radius;
-    border: solid $border-width v-bind('colorStore.value.theme.text');
-    transition: 0.2s;
-    box-sizing: border-box;
-    cursor: pointer;
-
-    &:after {
-      content: '';
-      position: absolute;
-      width: $width;
+    label {
+      width: calc(2 * $width);
       height: $height;
+      background: transparent;
+      position: relative;
+      display: inline-block;
       border-radius: $border-radius;
-      left: -$border-width;
-      top: -$border-width;
-      z-index: 2;
-      background: v-bind('colorStore.value.theme.text');
+      border: solid $border-width transparent;
       transition: 0.2s;
+      box-sizing: border-box;
       cursor: pointer;
+      user-select: none;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: $width;
+        height: $height;
+        border-radius: $border-radius;
+        left: -$border-width;
+        top: -$border-width;
+        z-index: 2;
+        background: v-bind('colorStore.value.theme.background');
+        transition: 0.2s;
+        cursor: pointer;
+      }
     }
   }
 }

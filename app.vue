@@ -21,9 +21,9 @@
         <NuxtPage />
       </div>
     </TransitionGroup>
-    <div class="bottom-contents">
+    <!-- <div class="bottom-contents">
       <ColorModeButton />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -58,27 +58,26 @@ body {
 }
 
 .dark-mode #app {
-  background: linear-gradient(
-    252.44deg,
-    #055a76 0%,
-    #5b2591 50.52%,
-    #930c18 100%
-  );
+  background: linear-gradient(252.44deg, #0DA3AF 0%, #705DBD 50.52%, #DB2A1D 100%);
 }
 
 .light-mode #app {
   background: linear-gradient(
     252.44deg,
-    #9ef9e0 0%,
-    #d3b7ee 50.52%,
+    #12ccc9 0%,
+    #bc86f2 50.52%,
     #ff825d 100%
   );
 }
 
 #app {
   position: relative;
+  height: 100vh;
   height: 100dvh;
   width: 100vw;
+  width: 100dvw;
+
+  overflow: hidden;
 
   color: v-bind('colorStore.value.theme.text');
   transition: color background border 0.2s;
@@ -88,6 +87,10 @@ body {
   color: transparent;
   text-stroke: 2px v-bind('colorStore.value.theme.text');
   -webkit-text-stroke: 2px v-bind('colorStore.value.theme.text');
+
+  @include mq-mixin(sp) {
+    -webkit-text-stroke: 1px v-bind('colorStore.value.theme.text');
+  }
 }
 
 [v-cloak] {
@@ -103,9 +106,11 @@ body {
   left: 1.5rem;
   right: 1.5rem;
   top: 3rem;
-  bottom: 3rem;
+  bottom: 1.5rem;
 
   .main {
+    display: grid;
+    grid-template-rows: auto 1fr;
     width: 100%;
     height: 100%;
     padding: 1rem;
@@ -132,6 +137,7 @@ body {
 .bottom-contents {
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 1rem;
   position: absolute;
   height: 48px;

@@ -2,7 +2,7 @@
   <div class="layouts-navigation-bar-button">
     <Button
       is-icon
-      icon="menu"
+      :icon="navigationStore.isOpen ? 'chevron_left' : 'menu'"
       :icon-props="{
         color: colorStore.value.theme.text,
         size: '32px',

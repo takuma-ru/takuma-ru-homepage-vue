@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    '@vueuse/motion/nuxt',
     [
       '@pinia/nuxt',
       {
@@ -26,5 +27,15 @@ export default defineNuxtConfig({
       'utils/**/*.{ts,js,mjs,mts}',
       'utils/**',
     ],
+  },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "~/assets/styles/global.scss";',
+        },
+      },
+    },
   },
 })

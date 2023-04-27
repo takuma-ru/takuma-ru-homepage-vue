@@ -77,7 +77,7 @@ const click = () => {
     if (props.to.includes('https://') || props.to.includes('http://')) {
       window.open(props.to, '_blank')
     } else {
-      navigateTo(props.to, { external: true })
+      navigateTo(props.to, { external: false })
     }
   } else {
     emit('click')
@@ -115,7 +115,7 @@ const click = () => {
 
     text-align: center;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     color: v-bind('dependsLuminanceColor(backgroundColor)');
     white-space: nowrap;
 
