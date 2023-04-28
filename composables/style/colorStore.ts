@@ -134,7 +134,7 @@ export const useColorStore = defineStore('color', {
     setThemeFromColorMode() {
       const colorMode = useColorMode()
 
-      if (colorMode.preference === 'dark') {
+      if (colorMode.value === 'dark') {
         return this.setDarkTheme()
       }
 
