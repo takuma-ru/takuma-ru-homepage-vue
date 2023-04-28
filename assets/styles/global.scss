@@ -1,1 +1,23 @@
 @import './variables.scss';
+
+h1 {
+  font-size: 48px;
+  margin: 0;
+  line-height: 1.5;
+
+  @include mq-mixin(sp) {
+    font-size: 32px;
+  }
+}
+
+p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+
+  @include mq-mixin(sp) {
+    font-size: 14px;
+  }
+}

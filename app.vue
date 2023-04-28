@@ -55,13 +55,21 @@ body {
   width: 100vw;
   margin: 0;
   font-family: 'Mona-Sans', sans-serif;
+  overscroll-behavior: none;
 }
 
-.dark-mode #app {
-  background: linear-gradient(252.44deg, #0DA3AF 0%, #705DBD 50.52%, #DB2A1D 100%);
+.dark-mode html,
+body {
+  background: linear-gradient(
+    252.44deg,
+    #0da3af 0%,
+    #705dbd 50.52%,
+    #db2a1d 100%
+  );
 }
 
-.light-mode #app {
+.light-mode html,
+body {
   background: linear-gradient(
     252.44deg,
     #12ccc9 0%,
