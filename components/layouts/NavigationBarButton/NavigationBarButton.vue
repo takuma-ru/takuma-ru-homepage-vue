@@ -36,5 +36,7 @@ const switchOpen = () => {
 
 <style lang="scss" scoped>
 .layouts-navigation-bar-button {
+  position: sticky;
+  top: 0;
 }
 </style>

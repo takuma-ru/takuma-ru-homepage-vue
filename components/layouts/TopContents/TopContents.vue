@@ -7,7 +7,7 @@
       >
         takumaru.dev
       </NuxtLink>
-      / {{ route.name === 'index' ? '' : route.name }}
+      {{ route.fullPath === 'index' ? '' : route.fullPath }}
     </div>
   </div>
 </template>
@@ -22,6 +22,12 @@ const route = useRoute()
 /* -- props, emit -- */
 
 /* -- variable(ref, reactive, computed) -- */
+const path = computed(() => {
+  if (route.fullPath === 'index') return ''
+
+  if (route.query) {
+  }
+})
 
 /* -- function -- */
 

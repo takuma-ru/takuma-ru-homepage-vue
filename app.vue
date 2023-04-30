@@ -21,9 +21,6 @@
         <NuxtPage />
       </div>
     </TransitionGroup>
-    <!-- <div class="bottom-contents">
-      <ColorModeButton />
-    </div> -->
   </div>
 </template>
 
@@ -56,10 +53,31 @@ body {
   margin: 0;
   font-family: 'Mona-Sans', sans-serif;
   overscroll-behavior: none;
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    margin: 1rem 0;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-color: v-bind('colorStore.value.theme.subText');
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
 }
 
-.dark-mode html,
-body {
+.dark-mode #app {
   background: linear-gradient(
     252.44deg,
     #0da3af 0%,
@@ -68,8 +86,7 @@ body {
   );
 }
 
-.light-mode html,
-body {
+.light-mode #app {
   background: linear-gradient(
     252.44deg,
     #12ccc9 0%,
@@ -126,8 +143,9 @@ body {
     border: 4px solid v-bind('colorStore.value.theme.text');
     box-shadow: 0px 8px 40px rgba(34, 38, 37, 0.15);
     backdrop-filter: blur(3px);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     box-sizing: border-box;
+    overflow-y: auto;
   }
 }
 

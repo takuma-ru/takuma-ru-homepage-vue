@@ -18,7 +18,7 @@
         for="toggle"
         class="toggle-label"
       />
-      <span></span>
+      <span style="user-select: none" />
     </div>
     <Icon
       icon="dark_mode"
@@ -71,6 +71,7 @@ $border-width: 4px;
   align-items: center;
   gap: 0.5rem;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 
   .button {
     display: flex;

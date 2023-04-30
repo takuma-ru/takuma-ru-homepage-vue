@@ -78,14 +78,14 @@ const NEUTRAL_COLORS: IColorGradation = {
 const LIGHT_THEME_COLORS: IColorStoreState['value']['theme'] = {
   background: NEUTRAL_COLORS[900],
   text: NEUTRAL_COLORS[200],
-  subText: NEUTRAL_COLORS[700],
+  subText: NEUTRAL_COLORS[300],
   relativeNeutral: NEUTRAL_COLORS,
 }
 
 const DARK_THEME_COLORS: IColorStoreState['value']['theme'] = {
   background: NEUTRAL_COLORS[200],
   text: NEUTRAL_COLORS[900],
-  subText: NEUTRAL_COLORS[300],
+  subText: NEUTRAL_COLORS[800],
   relativeNeutral: {
     100: NEUTRAL_COLORS[900],
     200: NEUTRAL_COLORS[800],
