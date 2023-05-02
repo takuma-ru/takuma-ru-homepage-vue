@@ -136,6 +136,8 @@ body {
   .main {
     display: grid;
     grid-template-rows: auto 1fr;
+
+    position: relative;
     width: 100%;
     height: 100%;
     padding: 1rem;

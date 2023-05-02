@@ -98,7 +98,9 @@ definePageMeta({
       flex-direction: column;
       justify-content: center;
 
+      height: auto;
       padding: 0;
+      padding-bottom: 96px;
     }
 
     .contents {
