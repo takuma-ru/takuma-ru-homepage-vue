@@ -1,0 +1,26 @@
+env:
+  browser: true
+  es2022: true
+  node: true
+extends:
+  - 'plugin:vue/vue3-recommended'
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:storybook/recommended'
+  - '@vue/prettier'
+overrides: []
+parser: '@typescript-eslint/parser'
+parserOptions:
+  parser: '@typescript-eslint/parser'
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - vue
+  - '@typescript-eslint'
+  - prettier
+rules:
+  {
+    'vue/no-v-model-argument': 0,
+    'vue/multi-word-component-names': 'off',
+    'prettier/prettier': 'error',
+  }

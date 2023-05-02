@@ -1,18 +1,18 @@
 import { themes } from '@storybook/theming'
-import { app } from '@storybook/vue3';
-import { createPinia } from 'pinia';
+import { app } from '@storybook/vue3'
+import { createPinia } from 'pinia'
 
-const pinia = createPinia();
+const pinia = createPinia()
 
-app.use(pinia);
+app.use(pinia)
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
   darkMode: {
     // Override the default dark theme
@@ -28,12 +28,12 @@ export const parameters = {
     values: [
       {
         name: 'light',
-        value: '#F3F3F3',
+        value: '#F3F3F3'
       },
       {
         name: 'dark',
-        value: '#1B1B1B',
-      },
-    ],
-  },
+        value: '#1B1B1B'
+      }
+    ]
+  }
 }

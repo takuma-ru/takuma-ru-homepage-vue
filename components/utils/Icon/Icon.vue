@@ -1,18 +1,15 @@
 <template>
-  <span
-    id="Icon"
-    class="material-symbols-rounded"
-  >
-    {{ icon }}
+  <span class="material-symbols-rounded notranslate">
+    {{ props.icon }}
   </span>
 </template>
 
 <script lang="ts" setup>
-import { IconNameType } from '~/types/icon/IconNameType'
+import { IconNameType } from '~/types/iconNameType'
 
 /* -- type, interface -- */
 export interface IIconProps {
-  icon?: IconNameType | null
+  icon?: IconNameType
   size?: string
   color?: string | null
   fill?: boolean
@@ -23,33 +20,33 @@ export interface IIconProps {
 
 /* -- props, emit -- */
 const props = withDefaults(defineProps<IIconProps>(), {
-  icon: null,
+  icon: undefined,
   size: '24px',
-  color: null,
   fill: false,
-  wght: 500,
+  wght: 600,
   grad: 0,
-  opsz: 48
+  opsz: 48,
 })
 
 /* -- store -- */
 const colorStore = useColorStore()
 
 /* -- variable(ref, reactive, computed) -- */
-const iconColor = computed(() => {
-  return props.color ? props.color : colorStore.color.theme.subText
-})
 
 /* -- function -- */
+
 /* -- watch -- */
+
 /* -- life cycle -- */
 </script>
 
 <style lang="scss" scoped>
 .material-symbols-rounded {
-  font-variation-settings: 'FILL' v-bind('props.fill ? 1 : 0'), 'wght' v-bind('props.wght'), 'GRAD' v-bind('props.grad'), 'opsz' v-bind('props.opsz');
+  font-variation-settings: 'FILL' v-bind('props.fill ? 1 : 0'),
+    'wght' v-bind('props.wght'), 'GRAD' v-bind('props.grad'),
+    'opsz' v-bind('props.opsz');
   font-size: v-bind('props.size');
-  color: v-bind("iconColor");
+  color: v-bind('props.color ? props.color : colorStore.value.theme.text');
   text-align: center;
   user-select: none;
 }

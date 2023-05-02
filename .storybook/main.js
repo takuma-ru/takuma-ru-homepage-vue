@@ -4,22 +4,22 @@ const path = require('path')
 
 module.exports = {
   stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)"
+    '../stories/**/*.stories.mdx',
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+    '../components/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
     'storybook-dark-mode'
   ],
-  framework: "@storybook/vue3",
+  framework: '@storybook/vue3',
   core: {
-    "builder": "@storybook/builder-vite"
+    builder: '@storybook/builder-vite'
   },
   features: {
-    "storyStoreV7": true
+    storyStoreV7: true
   },
   viteFinal: async (config) => {
     config.plugins = [
@@ -30,28 +30,20 @@ module.exports = {
           '@vueuse/core',
           'pinia',
           {
-            'nuxt': [
-              'useRoute'
-            ]
+            nuxt: ['useRoute']
           }
         ],
-        dts: '.storybook/types/auto-imports.d.ts',
+        dts: '.storybook/types/auto-imports.d.ts'
       }),
       AutoImport({
-        dirs: [
-          'composables',
-          'composables/**/*.{ts,js,mjs,mts}',
-        ],
+        dirs: ['composables', 'composables/**/*.{ts,js,mjs,mts}'],
         vueTemplate: true,
-        dts: '.storybook/types/composables.d.ts',
+        dts: '.storybook/types/composables.d.ts'
       }),
       AutoImport({
-        dirs: [
-          'utils',
-          'utils/**/*.{ts,js,mjs,mts}'
-        ],
+        dirs: ['utils', 'utils/**/*.{ts,js,mjs,mts}'],
         vueTemplate: true,
-        dts: '.storybook/types/utils.d.ts',
+        dts: '.storybook/types/utils.d.ts'
       }),
       Components({
         dirs: [
@@ -62,12 +54,12 @@ module.exports = {
         deep: true,
         directoryAsNamespace: true,
         extensions: ['vue'],
-        dts: '.storybook/types/components.d.ts',
-      }),
+        dts: '.storybook/types/components.d.ts'
+      })
     ]
 
     return {
-      ...config,
+      ...config
       /* resolve: {
         alias: [
           {

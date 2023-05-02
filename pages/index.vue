@@ -1,84 +1,48 @@
 <template>
   <div id="index">
-    <div class="title">
-      <h1 class="my-name">
-        Hi!<br>
-        I'm <HighLight>takuma-ru</HighLight>.
-      </h1>
-      <div class="media">
-        <Button
-          icon="person"
-          fit-content
-          :icon-props="{
-            fill: true
-          }"
-          to="/about"
-        >
-          Go to About Me
-        </Button>
-        <Button
-          icon="category"
-          fit-content
-          :icon-props="{
-            fill: true
-          }"
-          to="/works"
-        >
-          Go to My Portfolio
-        </Button>
-        <Button
-          icon="mail"
-          fit-content
-          :icon-props="{
-            fill: true
-          }"
-          to="/contact"
-        >
-          How to contact me
-        </Button>
-      </div>
-    </div>
+    <span class="my-name">
+      <span class="outline">I'm</span>
+      <span>takumaru</span>
+      <span class="outline">.</span>
+    </span>
+    <Button
+      icon="start"
+      fit-content
+      to="/about"
+      class="next-page-button"
+    >
+      Next... How is Me ?
+    </Button>
   </div>
 </template>
 
-<script lang="ts" setup>
-/* -- type, interface -- */
-
-/* -- store -- */
-
-/* -- props, emit -- */
-
-/* -- variable(ref, reactive, computed) -- */
-/* -- function -- */
-
-/* -- watch -- */
-
-/* -- life cycle -- */
-definePageMeta({
-  title: 'Index',
-  layout: 'top'
-})
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 #index {
   display: grid;
-  align-items: center;
-  justify-content: center;
+  grid-template-rows: 1fr auto;
 
-  height: 100%;
+  .my-name {
+    align-self: center;
+    justify-self: center;
 
-  .title {
-    .my-name {
-      font-size: 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 24px;
+
+    font-size: 96px;
+    font-weight: bold;
+
+    @include mq-mixin(sp) {
+
+      font-size: 48px;
+      gap: 12px;
     }
+  }
 
-    .media {
-      display: flex;
-      flex-flow: column;
-      align-items: flex-start;
-      row-gap: 1rem;
-    }
+  .next-page-button {
+    justify-self: end;
   }
 }
 </style>

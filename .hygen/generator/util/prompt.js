@@ -11,7 +11,7 @@ module.exports = {
       type: 'select',
       name: 'atomic',
       message: 'Please select directory',
-      choices: [ 'utils', 'style', 'supabase', 'enter by yourself' ],
+      choices: [ 'utils', 'style', 'firebase', 'enter by yourself' ],
     }]
 
     return inquirer

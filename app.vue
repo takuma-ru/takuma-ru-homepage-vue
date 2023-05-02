@@ -1,67 +1,61 @@
 <template>
-  <div id="app">
-    <NuxtLayout :name="layout">
-      <NuxtPage />
-    </NuxtLayout>
+  <div
+    v-cloak
+    id="app"
+  >
+    <div class="top-contents">
+      <TopContents />
+    </div>
+    <TransitionGroup
+      name="main-wrapper-transition"
+      tag="div"
+      class="main-wrapper"
+    >
+      <NavigationBar :key="1" />
+      <div
+        v-cloak
+        :key="2"
+        class="main"
+      >
+        <NavigationBarButton />
+        <NuxtPage />
+      </div>
+    </TransitionGroup>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { registerSW } from 'virtual:pwa-register'
-import 'devicon'
+import 'material-symbols'
 
-registerSW()
-/* -- type, interface -- */
-
-/* -- store -- */
 const colorStore = useColorStore()
-const displayStatusStore = useDisplayStatusStore()
-const colorModeStore = useColorModeStore()
-const productDataStore = useProductDataStore()
 
-/* -- props, emit -- */
-
-/* -- variable(ref, reactive, computed) -- */
-const nuxtApp = useNuxtApp()
-const loading = ref(false)
-const layout = computed(() => {
-  if (useRoute().fullPath === '/') {
-    return 'top'
-  } else if (displayStatusStore.displaySize === 'sm') {
-    return 'smartphone'
-  } else {
-    return 'default'
-  }
-})
-
-useSvh()
-
-/* -- function -- */
-
-/* -- watch -- */
-
-/* -- life cycle -- */
-nuxtApp.hook('page:start', () => {
-  loading.value = true
-})
-nuxtApp.hook('page:finish', () => {
-  loading.value = false
-})
-productDataStore.getProductData()
+colorStore.setThemeFromColorMode()
 </script>
 
 <style lang="scss">
-:root {
-  --svh: 1vh
+@font-face {
+  font-family: 'Mona-Sans';
+  src: url('~/assets/Mona-Sans-Medium.ttf') format('truetype');
+  font-weight: normal;
 }
 
-html, body {
-  margin: 0px;
+@font-face {
+  font-family: 'Mona-Sans';
+  src: url('~/assets/Mona-Sans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
 
-  font-family: 'Noto Sans JP', sans-serif;
+html,
+body {
+  position: relative;
+  height: 100dvh;
+  width: 100vw;
+  margin: 0;
+  font-family: 'Mona-Sans', sans-serif;
+  overscroll-behavior: none;
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
     height: 8px;
   }
 
@@ -71,9 +65,10 @@ html, body {
   }
 
   ::-webkit-scrollbar-thumb {
-    border: 2px solid transparent;
+    margin: 1rem 0;
+    border: 4px solid transparent;
     border-radius: 8px;
-    background-color: v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[1]");
+    background-color: v-bind('colorStore.value.theme.subText');
     background-clip: content-box;
   }
 
@@ -82,34 +77,134 @@ html, body {
   }
 }
 
+.dark-mode #app {
+  background: linear-gradient(
+    252.44deg,
+    #0da3af 0%,
+    #705dbd 50.52%,
+    #db2a1d 100%
+  );
+}
+
+.light-mode #app {
+  background: linear-gradient(
+    252.44deg,
+    #12ccc9 0%,
+    #bc86f2 50.52%,
+    #ff825d 100%
+  );
+}
+
 #app {
-  width: 100vw;
+  position: relative;
   height: 100vh;
-  height: calc(var(--svh, 1vh) * 100);
-  max-height: calc(var(--svh, 1vh) * 100);
-  background-color: v-bind("colorStore.color.theme.background");
-  color: v-bind("colorStore.color.theme.text");
+  height: 100dvh;
+  width: 100vw;
+  width: 100dvw;
+
+  overflow: hidden;
+
+  color: v-bind('colorStore.value.theme.text');
+  transition: color background border 0.2s;
 }
 
-p {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 400;
+.outline {
+  color: transparent;
+  text-stroke: 2px v-bind('colorStore.value.theme.text');
+  -webkit-text-stroke: 2px v-bind('colorStore.value.theme.text');
+
+  @include mq-mixin(sp) {
+    -webkit-text-stroke: 1px v-bind('colorStore.value.theme.text');
+  }
 }
 
-hr {
-  border: none;
-  border-bottom: solid 1px v-bind("colorModeStore.colorMode === 'dark' ? colorStore.color.black.lighten[1] : colorStore.color.black.lighten[2]");
+[v-cloak] {
+  display: none;
 }
+</style>
 
-.loading {
+<style lang="scss" scoped>
+.main-wrapper {
+  display: flex;
+  column-gap: 24px;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  height: calc(var(--svh, 1vh) * 100);
-  max-height: calc(var(--svh, 1vh) * 100);
-  top: 0%;
-  left: 0%;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 3rem;
+  bottom: 1.5rem;
 
-  background-color: v-bind("colorStore.color.theme.background");
+  .main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background: rgba(250, 252, 252, 0.05);
+    border: 4px solid v-bind('colorStore.value.theme.text');
+    box-shadow: 0px 8px 40px rgba(34, 38, 37, 0.15);
+    backdrop-filter: blur(3px);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+}
+
+.top-contents {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  height: 48px;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 0;
+}
+
+.bottom-contents {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  position: absolute;
+  height: 48px;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 0;
+}
+
+.main-wrapper-transition {
+  &-enter {
+    &-from {
+      opacity: 0 !important;
+      transform: translateX(-128px) !important;
+    }
+    &-active {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    &-to {
+    }
+  }
+
+  &-leave {
+    &-from {
+    }
+    &-active {
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    &-to {
+      opacity: 0 !important;
+      transform: translateX(-128px) !important;
+    }
+  }
+
+  &-move {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  &-leave-active {
+    position: absolute;
+  }
 }
 </style>
